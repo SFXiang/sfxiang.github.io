@@ -1,0 +1,2302 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="SFXiang">
+      
+      
+        <link rel="canonical" href="https://sfxiang.github.io/note/docs/16-%E8%99%9A%E6%8B%9F%E5%8C%96/">
+      
+      
+        <link rel="prev" href="../15-%E7%BD%91%E7%BB%9C/">
+      
+      
+        <link rel="next" href="../17-%E8%BD%BB%E9%87%8F%E7%BA%A7%E8%99%9A%E6%8B%9F%E5%8C%96/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>系统虚拟化 - 离岛便利店</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="离岛便利店" class="md-header__button md-logo" aria-label="离岛便利店" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            离岛便利店
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              系统虚拟化
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="离岛便利店" class="md-nav__button md-logo" aria-label="离岛便利店" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    离岛便利店
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome to MkDocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../malloc%26free/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Malloc&free
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Note
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Note
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Docs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Docs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-%E5%A4%9A%E6%A0%B8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    多核
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    文件系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%B4%A9%E6%BA%83%E4%B8%80%E8%87%B4%E6%80%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    文件系统崩溃一致性
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-%E6%96%B0%E5%9E%8B%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    新型文件系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    设备
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-%E7%BD%91%E7%BB%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    系统虚拟化
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    系统虚拟化
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 虚拟机分类
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 虚拟机分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-type-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Type-1虚拟机监控器
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-type-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Type-2虚拟机监控器
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 实现虚拟化
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 处理器虚拟化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 处理器虚拟化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      下陷和模拟
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 解释执行
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 二进制翻译
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 半虚拟化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 硬件虚拟化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 硬件虚拟化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341-vt-x" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.1 VT-x的处理器虚拟化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4.1 VT-x的处理器虚拟化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3411-vmcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.1.1 VMCS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342-vm-entry" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.2 VM Entry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#343-vm-exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.3 VM Exit
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342-arm1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.2 ARM的虚拟化技术1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#343-arm2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.3 ARM的虚拟化技术2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#344-vt-xvhe" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.4 VT-x和VHE对比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#345-type-1type-2vt-xvhe" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.5 Type-1和Type-2在VT-x和VHE下架构
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-qemukvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. QEMU/KVM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. QEMU/KVM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-qemukvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 QEMU使用KVM的用户态接口
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-qemukvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 QEMU/KVM的流程
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 内存虚拟化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 内存虚拟化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 影子页表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 直接页表映射
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 两阶段地址翻译
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-memory-ballooning" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4 memory ballooning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. I/O虚拟化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. I/O虚拟化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 软件模拟
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 半虚拟化方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 设备直通
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3 设备直通">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      问题1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      问题2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4 I/O虚拟化技术对比
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-%E8%BD%BB%E9%87%8F%E7%BA%A7%E8%99%9A%E6%8B%9F%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    轻量级虚拟化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-%E7%A1%AC%E4%BB%B6%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    硬件结构
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-%E4%B8%AD%E6%96%AD%E5%BC%82%E5%B8%B8%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    中断异常与系统调用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    操作系统内核架构
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-%E5%86%85%E5%AD%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    内存
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-%E8%BF%9B%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    进程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    调度
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    进程间通信
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-%E5%90%8C%E6%AD%A5%E5%8E%9F%E8%AF%AD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    同步原语
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Os
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/malloc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Linux高性能编程：malloc主要原理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Docs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Docs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Computer Science
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/dfx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    调试与故障排除
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/multicore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    多核与多处理器
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络与系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 虚拟机分类
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 虚拟机分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-type-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Type-1虚拟机监控器
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-type-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Type-2虚拟机监控器
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 实现虚拟化
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 处理器虚拟化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 处理器虚拟化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      下陷和模拟
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 解释执行
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 二进制翻译
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 半虚拟化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 硬件虚拟化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 硬件虚拟化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341-vt-x" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.1 VT-x的处理器虚拟化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4.1 VT-x的处理器虚拟化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3411-vmcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.1.1 VMCS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342-vm-entry" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.2 VM Entry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#343-vm-exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.3 VM Exit
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342-arm1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.2 ARM的虚拟化技术1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#343-arm2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.3 ARM的虚拟化技术2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#344-vt-xvhe" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.4 VT-x和VHE对比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#345-type-1type-2vt-xvhe" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.5 Type-1和Type-2在VT-x和VHE下架构
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-qemukvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. QEMU/KVM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. QEMU/KVM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-qemukvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 QEMU使用KVM的用户态接口
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-qemukvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 QEMU/KVM的流程
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 内存虚拟化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 内存虚拟化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 影子页表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 直接页表映射
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 两阶段地址翻译
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-memory-ballooning" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4 memory ballooning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. I/O虚拟化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. I/O虚拟化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 软件模拟
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 半虚拟化方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 设备直通
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3 设备直通">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      问题1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      问题2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4 I/O虚拟化技术对比
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">系统虚拟化</h1>
+<p><strong>系统虚拟化的优势</strong> （P330）</p>
+<ol>
+<li>服务器整合</li>
+<li>虚拟机管理</li>
+<li>虚拟机热迁移</li>
+<li>虚拟机安全自省</li>
+<li>方便程序开发</li>
+</ol>
+<p><strong>虚拟化标准</strong></p>
+<ol>
+<li>为虚拟机内程序提供与该程序原先执行的硬件完全一样的接口 </li>
+<li>虚拟机只比在无虚拟化的情况下性能略差一点 </li>
+<li>虚拟机监控器控制所有物理资源</li>
+</ol>
+<h2 id="1">1. 虚拟机分类</h2>
+<h3 id="11-type-1">1.1 Type-1虚拟机监控器</h3>
+<ul>
+<li>直接运行在硬件之上 </li>
+<li>充当操作系统的角色 </li>
+<li>直接管理所有物理资源 <ul>
+<li>实现调度、内存管理、驱动等功能 </li>
+</ul>
+</li>
+<li>性能损失较少 </li>
+<li>例如Xen, VMware ESX Server</li>
+</ul>
+<p><img alt="type1" src="图片\type1.png" /><img alt="type2" src="图片\type2.png" /></p>
+<h3 id="12-type-2">1.2 Type-2虚拟机监控器</h3>
+<ul>
+<li>依托于主机操作系统 </li>
+<li>主机操作系统管理物理资源 </li>
+<li>虚拟机监控器以进程/内核模块的形态运行 </li>
+<li>易于实现和安装 </li>
+<li>例如QEMU/KVM</li>
+</ul>
+<p><strong>优势</strong></p>
+<ol>
+<li>
+<p>在已有的操作系统之上将虚拟机当做应用运行</p>
+</li>
+<li>
+<p>复用主机操作系统的大部分功能</p>
+</li>
+</ol>
+<p>文件系统 – 驱动程序 – 处理器调度 – 物理内存管理</p>
+<h2 id="2">2. 实现虚拟化</h2>
+<p><strong>系统虚拟化的流程</strong></p>
+<ol>
+<li>
+<p>第一步 ：捕捉所有系统ISA并陷入(Trap)</p>
+</li>
+<li>
+<p>第二步 ：由具体指令实现相应虚拟化</p>
+</li>
+</ol>
+<p>• 控制虚拟处理器行为 • 控制虚拟内存行为 • 控制虚拟设备行为</p>
+<ol>
+<li>第三步 ： 回到虚拟机继续执行</li>
+</ol>
+<h2 id="3">3. 处理器虚拟化</h2>
+<h3 id="_2">下陷和模拟</h3>
+<p>🔺 将虚拟机监控器运行在EL1， 将客户操作系统和其上的进程都运行在EL0 ，当操作系统执行系统ISA指令时下陷</p>
+<p>▲ <strong>trap</strong> : 在用户态EL0执行特权指令将陷入EL1的VMM中</p>
+<p>▲ <strong>emulate </strong>: 这些指令的功能都由VMM内的函数实现</p>
+<p><img alt="下陷和模拟" src="图片\下陷和模拟.png" /></p>
+<p>🔺 VMM看到特权指令后修改PC，直接修改寄存器等等，模拟硬件的执行效果-&gt;是纯软件模拟哦</p>
+<p><strong>敏感指令</strong></p>
+<p>敏感指令指，<u>管理系统物理资源</u>或<u>更改CPU状态</u>的指令</p>
+<p>有以下分类：</p>
+<ol>
+<li>
+<p>读写特殊寄存器或更改处理器状态 </p>
+</li>
+<li>
+<p>读写敏感内存：例如访问未映射内存、写入只读内存</p>
+</li>
+<li>
+<p>I/O指令</p>
+</li>
+</ol>
+<p><strong>特权指令</strong></p>
+<ul>
+<li>在<u>用户态</u>执行会<strong>触发异常</strong>，并陷入内核态</li>
+</ul>
+<p>🔺 <strong>可虚拟化架构</strong>特征： 所有敏感指令都是特权指令，即都会下陷被VMM捕捉</p>
+<p>在下陷和模拟的虚拟化办法中，有五个方法可以弥补不可虚拟化的方法：</p>
+<ul>
+<li>解释执行</li>
+<li>动态二进制翻译</li>
+<li>扫描和翻译</li>
+<li>半虚拟化技术</li>
+<li>硬件虚拟化技术</li>
+</ul>
+<h3 id="31">3.1 解释执行</h3>
+<ul>
+<li>使用软件方法对<u>每一条虚拟机代码</u>进行模拟 </li>
+<li>不区分敏感指令还是其他指令 </li>
+<li>没有虚拟机指令直接在硬件上执行 </li>
+<li>使用内存维护虚拟机状态 </li>
+<li>例如：使用uint64_t x[30]数组保存所有通用寄存器的值</li>
+</ul>
+<p>🔺 所有虚拟机的指令都是VMM软件模拟的，并不是硬件直接执行的</p>
+<p><strong>优点</strong></p>
+<ol>
+<li>解决了敏感函数不下陷的问题 （因为根本不区分敏感指令和普通指令了）</li>
+<li>可以模拟不同ISA的虚拟机 </li>
+<li>易于实现、复杂度低</li>
+</ol>
+<p><strong>缺点</strong></p>
+<ol>
+<li>非常慢：任何一条虚拟机指令都会转换成多条模拟指令</li>
+</ol>
+<h3 id="32">3.2 二进制翻译</h3>
+<p>扫一遍二进制，如果扫描到敏感指令，则替换，不是敏感指令则不动。二进制就是硬件真的执行的二进制。不用VMM模拟执行。</p>
+<p><img alt="二进制翻译" src="图片\二进制翻译.png" /></p>
+<ul>
+<li>提出两个加速技术 </li>
+<li>执行前<strong>批量翻译</strong>虚拟机指令 </li>
+<li><strong>缓存</strong>已翻译完成的指令 </li>
+<li>使用基本块(Basic Block)的翻译粒度（为什么?） </li>
+<li>每一个基本块被翻译完后叫代码补丁</li>
+</ul>
+<p><strong>优点</strong></p>
+<p>因为1. 批量翻译 2. 只针对翻译敏感指令 3. 最终是硬件直接执行 4. 缓存命中</p>
+<p>加快了速度</p>
+<p><strong>缺点</strong></p>
+<ol>
+<li>
+<p>不能处理自修改的代码(Self-modifying Code)</p>
+</li>
+<li>
+<p>中断插入粒度变大</p>
+</li>
+</ol>
+<p>– 模拟执行可以在任意指令位置插入虚拟中断 </p>
+<p>– 二进制翻译时只能在<u>基本块边界</u>插入虚拟中断</p>
+<p>​    （因为只能在每个基本块结束的时候检查有没有中断来，如果是正常系统，是引脚控制，粒度是每个指令）</p>
+<h3 id="33">3.3 半虚拟化</h3>
+<ul>
+<li>让VMM提供接口给虚拟机，称为Hypercall</li>
+<li>修改操作系统源码，替换不可虚拟化的指令，将其更改为Hypercall</li>
+</ul>
+<p>▲ 就是将所有不引起下陷的敏感指令替换成超级调用</p>
+<p><strong>优点</strong></p>
+<ol>
+<li>解决了敏感函数不下陷的问题 </li>
+<li>协同设计的思想可以提升某些场景下的系统性能 </li>
+<li>I/O等场景（反正改了操作系统，系统调用可以进行batch优化）</li>
+</ol>
+<p><strong>缺点</strong></p>
+<ol>
+<li>需要修改操作系统代码，难以用于闭源系统 </li>
+<li>即使是开源系统，也难以同时在不同版本中实现</li>
+</ol>
+<h3 id="34">3.4 硬件虚拟化</h3>
+<h4 id="341-vt-x">3.4.1 VT-x的处理器虚拟化</h4>
+<p><img alt="VT-x的处理器虚拟化" src="图片\VT-x的处理器虚拟化.png" /></p>
+<p><strong>VMM的进程对应虚拟机</strong></p>
+<p><strong>VMM的线程对应vcpu</strong></p>
+<ul>
+<li>
+<p>因为线程的引入是为了并行，是调度的基本单位</p>
+</li>
+<li>
+<p>如果给虚拟机配了n个vcpu，那么无论虚拟机里有多少个线程，最终在VMM里真正运行的只有vcpu个</p>
+</li>
+<li>
+<p><strong>spin-lock</strong>:对于虚拟机来说，他以为自己占用了所有的CPU，所以这个线程没锁，会认为锁被别的CPU上的线程拿着，那个人的关键路径肯定很短，会马上放掉，然后我就可以用了</p>
+</li>
+</ul>
+<p>但事实上，自己只占用vcpu个cpu，所以可能会被调度走，spin很久</p>
+<h5 id="3411-vmcs"><strong>3.4.1.1 VMCS</strong></h5>
+<ul>
+<li>VMM提供给硬件的内存页（4KB）</li>
+<li>记录与当前VM运行相关的所有状态</li>
+<li><strong>VM Entry</strong> </li>
+<li>硬件自动将当前CPU中的VMM状态保存至VMCS </li>
+<li>硬件硬件自动从VMCS中加载VM状态至CPU中 </li>
+<li><strong>VM Exit</strong> </li>
+<li>硬件自动将当前CPU中的VM状态保存至VMCS </li>
+<li>硬件自动从VMCS加载VMM状态至CPU中</li>
+</ul>
+<p><strong>包含6个部分</strong> </p>
+<ol>
+<li>Guest-state area: 发生VM exit时，CPU的状态会被硬件自动保存至 该区域；发生VM Entry时，硬件自动从该区域加载状态至CPU中 </li>
+<li>Host-state area：发生VM exit时，硬件自动从该区域加载状态至 CPU中；发生VM Entry时，CPU的状态会被自动保存至该区域 </li>
+<li>VM-execution control fields： 控制Non-root模式中虚拟机的行为 </li>
+<li>VM-exit control fields：控制VM exit的行为 （▲ 可配置系统调用是guest os直接处理还是vm exit给VMM处理）</li>
+<li>VM-entry control fields：控制VM entry的行为 </li>
+<li>VM-exit information fields：VM Exit的原因和相关信息（只读区域）</li>
+</ol>
+<p><img alt="vt-x执行过程" src="图片\vt-x执行过程.png" /></p>
+<ul>
+<li>有几个虚拟机就有几个VMCS</li>
+<li>但是真正加载到CPU里面的VMCS的数量不超过系统的总核数</li>
+</ul>
+<h5 id="342-vm-entry">3.4.2 VM Entry</h5>
+<ul>
+<li>从VMM进入VM </li>
+<li>从Root模式切换到Non-root模式 </li>
+<li>第一次启动虚拟机时使用VMLAUNCH指令 </li>
+<li>后续的VM Entry使用VMRESUME指令</li>
+</ul>
+<h5 id="343-vm-exit">3.4.3 VM Exit</h5>
+<ul>
+<li>从VM回到VMM </li>
+<li>从Non-root模式切换到Root模式 </li>
+<li>虚拟机执行敏感指令或发生事件(如外部中断)</li>
+</ul>
+<p><img alt="vt-x和普通进程对比" src="图片\vt-x和普通进程对比.png" /></p>
+<h4 id="342-arm1">3.4.2 ARM的虚拟化技术1</h4>
+<p><img src="图片\arm虚拟化1.png" alt="arm虚拟化1" style="zoom: 40%;" /><img src="图片\arm虚拟化2.png" alt="arm虚拟化2" style="zoom: 40%;" /></p>
+<p><strong>VM Entry</strong></p>
+<ul>
+<li>使用ERET指令从VMM进入VM </li>
+<li>在进入VM之前，VMM需要主动加载VM状态 </li>
+<li>VM内状态：通用寄存器、系统寄存器</li>
+<li>VM的控制状态：HCR_EL2、VTTBR_EL2等</li>
+</ul>
+<p><strong>VM Exit</strong></p>
+<ul>
+<li>虚拟机执行敏感指令或收到中断等</li>
+<li>以Exception、IRQ、FIQ的形式回到VMM</li>
+<li>调用VMM记录在vbar_el2中的相关处理函数</li>
+<li>下陷第一步：VMM主动保存所有VM的状态</li>
+</ul>
+<p><strong>ARM硬件虚拟化的新功能</strong></p>
+<ul>
+<li>ARM中没有VMCS</li>
+<li>VM能直接控制EL1和EL0的状态</li>
+<li>自由地修改PSTATE(VMM不需要捕捉CPS指令)</li>
+<li>可以读写TTBR0_EL1/SCTRL_EL1/TCR_EL1等寄存器</li>
+<li>VM Exit时VMM仍然可以直接访问VM的EL0和EL1寄存器</li>
+</ul>
+<p>▲ 因为ARM的寄存器有两套，所以切换不用放到VMCS里保存</p>
+<p><strong>问题</strong></p>
+<ul>
+<li>增加EL21特权级</li>
+<li>EL2只能运行VMM，不能运行一般操作系统内核</li>
+<li>OS一般只使用EL1的寄存器，在EL2中不存在对应的寄存器<ul>
+<li>EL1：TTBR0_EL1、TTBR1_EL1</li>
+<li>EL2：TTBR_EL2</li>
+</ul>
+</li>
+<li>EL2不能与EL0共享内存</li>
+<li>因此：无法在EL2中运行Type-2虚拟机监控器的Host OS</li>
+<li>或者说，Host OS需要大量修改才能运行在EL2</li>
+</ul>
+<h4 id="343-arm2">3.4.3 ARM的虚拟化技术2</h4>
+<p><strong>ARMv8.1</strong> </p>
+<ul>
+<li>推出Virtualization Host Extensions(<strong>VHE</strong>)，在HCR_EL2.E2H打开 </li>
+<li>寄存器映射 </li>
+<li>允许与EL0共享内存 </li>
+<li>使EL2中可直接运行未修改的操作系统内核（Host OS）</li>
+</ul>
+<p><img alt="ARMv8.1" src="图片\ARMv8.1.png" /></p>
+<p><img alt="ARMv8.1中的Type-2 VMM架构" src="图片\ARMv8.1中的Type-2 VMM架构.png" /></p>
+<h4 id="344-vt-xvhe">3.4.4 VT-x和VHE对比</h4>
+<p><img alt="VT-x和VHE对比" src="图片\VT-x和VHE对比.png" /></p>
+<h4 id="345-type-1type-2vt-xvhe">3.4.5 Type-1和Type-2在VT-x和VHE下架构</h4>
+<p><img alt="Type-1和Type-2在VT-x和VHE下架构" src="图片\Type-1和Type-2在VT-x和VHE下架构.png" /></p>
+<h2 id="4-qemukvm">4. QEMU/KVM</h2>
+<p><strong>QUME</strong></p>
+<ul>
+<li>运行在<u>用户态</u>，负责实现<u>策略</u></li>
+<li>也提供虚拟设备的支持</li>
+</ul>
+<p><strong>KVM</strong></p>
+<ul>
+<li>以<u>Linux内核</u>模块运行，负责实现<u>机制</u></li>
+<li>可以直接使用Linux的功能 </li>
+<li>例如内存管理、进程调度 </li>
+<li>使用硬件虚拟化功能</li>
+</ul>
+<p><strong>两部分合作</strong></p>
+<ul>
+<li>KVM捕捉所有敏感指令和事件（trap），传递给QEMU(emulate)</li>
+<li>KVM不提供设备的虚拟化，需要使用QEMU的虚拟设备</li>
+</ul>
+<h3 id="41-qemukvm">4.1 QEMU使用KVM的用户态接口</h3>
+<p><img alt="QEMU使用KVM的用户态接口" src="图片\QEMU使用KVM的用户态接口.png" /></p>
+<p><strong>ioctl(KVM_RUN)时发生了什么</strong></p>
+<ul>
+<li>
+<p>x86中 </p>
+</li>
+<li>
+<p>KVM找到此VCPU对应的VMCS</p>
+</li>
+<li>使用指令加载VMCS</li>
+<li>VMLAUNCH/VMRESUME进入Non-root模式 </li>
+<li>硬件自动同步状态 (更新VMCS)</li>
+<li>
+<p>PC切换成VMCS-&gt;GUEST_RIP，开始执行</p>
+</li>
+<li>
+<p>ARM中</p>
+</li>
+<li>
+<p>KVM主动加载VCPU对应的所有状态</p>
+</li>
+<li>
+<p>使用eret指令进入EL2</p>
+<p>PC切换成ELR_EL2的值，开始执行</p>
+</li>
+</ul>
+<h3 id="42-qemukvm">4.2 QEMU/KVM的流程</h3>
+<p><img alt="QEMU-KVM的流程" src="图片\QEMU-KVM的流程.png" /></p>
+<p>▲ KVM 有两个switch case，一个是等待QEMU调ioctl(对参数switch)，另一个等待虚拟机的VM exit</p>
+<pre><code class="language-c">open(&quot;/dev/kvm&quot;)
+ioctl(KVM_CREATE_VM)
+ioctl(KVM_CREATE_VCPU)
+while (true) {
+    ioctl(KVM_RUN)                  // 执行这句后就进入了KVM后进入虚拟机
+                                    // 一旦这句话返回，说明发生了VM exit
+    exit_reason = get_exit_reason();
+    switch (exit_reason) {
+        case KVM_EXIT_IO: /* ... */
+            break;
+        case KVM_EXIT_MMIO: /* ... */
+            break;
+    }
+}
+</code></pre>
+<p><strong>WFI指令</strong>VM Exit的处理流程</p>
+<p><img alt="WFI指令VM Exit的处理流程" src="图片\WFI指令VM Exit的处理流程.png" /></p>
+<p><strong>I/O指令</strong>VM Exit的处理流程</p>
+<p><img src="图片\IOVM Exit的处理流程.png" alt="IOVM Exit的处理流程" style="zoom:80%;" /></p>
+<h2 id="5">5. 内存虚拟化</h2>
+<p><strong>内存虚拟化的目标</strong></p>
+<ol>
+<li>为虚拟机提供虚拟的物理地址空间</li>
+</ol>
+<p>物理地址从0开始连续增长</p>
+<ol>
+<li>隔离不同虚拟机的物理地址空间</li>
+</ol>
+<p>VM-1无法访问其他的内存</p>
+<p><strong>内存虚拟化特点</strong> ：P342</p>
+<h3 id="51">5.1 影子页表</h3>
+<p>影子页表是在没有硬件虚拟化的条件下</p>
+<p><strong>影子页表的创建</strong>：（具体见P344）</p>
+<pre><code class="language-c">// 构造影子页表
+set_cr3 (guest_page_table):
+    for GVA in 0 to 220
+        if guest_page_table[GVA] &amp; PTE_P:
+        // P位被设上说明是已经映射的地址
+            GPA = guest_page_table[GVA] &gt;&gt; 12   // 后12位是属性
+            HPA = host_page_table[GPA] &gt;&gt; 12
+
+            if GVA 被用来做页表，则标记位只读
+            shadow_page_table[GVA] = (HPA&lt;&lt;12)|PTE_P
+        else
+            shadow_page_table[GVA] = 0
+    CR3 = PHYSICAL_ADDR(shadow_page_table)
+</code></pre>
+<p><strong>▲ shadow_page_table</strong>保存在host的内存（安全性）</p>
+<p>▲ guest只能操作GPT，看不到影子页表</p>
+<p><img alt="影子页表" src="图片\影子页表.png" /></p>
+<p>🔺 把<u>GPT页表内存页的地址</u>（就是那个虚拟地址）在<u>影子页表</u>里标记为<strong>只读</strong>，这样客户操作系统想改GPT的时候，会触发page fault，并下陷到VMM。VMM帮助更新GPT和SPT</p>
+<p>🔺 Guest Os 看自己的页表，也就是GPT，是可读可写的</p>
+<p>🔺 虚拟化的关键：<strong>TRAP</strong></p>
+<p>现在虚拟机跑在ring3(低权限)，host跑在ring0。SPT应给给GPT的内存必须是ring3，这样就<u>打破了虚拟机里面的用户态和内核的隔离</u>，（现在虚拟机里的用户态和内核态的内存都是ring3，那用户就可以随意访问内核的内存了）</p>
+<p><img alt="guestVM的内存" src="图片\guestVM的内存.png" /></p>
+<p>把一个页表拆成两个页表，都是ring3。给应用的页表，不映射内核的数据。</p>
+<p>如何在两个页表中切换？</p>
+<p>guest 的APP 调syscall 进入host OS  (ring3调syscall进入ring0)，host OS 拿到syscall，切到guest OS。</p>
+<p>▲ host OS本质上是trap了guest OS 和 guest APP 的切换，给他们换页表</p>
+<p><strong>优点</strong></p>
+<ol>
+<li>地址翻译速度快</li>
+</ol>
+<p>MMU只需遍历一个页表就可完成翻译，即使TLB未命中，最多只需要四次访存操作</p>
+<p><strong>缺点</strong></p>
+<ol>
+<li>影子页表的<u>建立</u>和后续的每次<u>更新</u>都需要VMM介入</li>
+<li>影子页表与页表一一对应，一个进程需要一个影子页表</li>
+</ol>
+<h3 id="52">5.2 直接页表映射</h3>
+<p>▲ 修改guest OS，guest OS的页表直接记录<u>GVA到HPA</u>的映射</p>
+<p>▲ VMM需要告知VM允许使用的HPA的范围</p>
+<p>▲ 为了安全性（VM不能乱写HPA，写到别人那边去），所以修改页表需要hypercall。将虚拟机的页表页设置为<strong>只读</strong>，虚拟机修改页表需要hypercall，VMM在接收请求后，修改页表，检查是否合法。</p>
+<p><strong>优点</strong></p>
+<ol>
+<li>实现复杂度降低</li>
+<li>影子页表将虚拟机对客户页表的修改透明的同步到影子页表，有较大性能开销，直接页表映射虚拟机可以将对页表的多次修改batch</li>
+</ol>
+<p><strong>缺点</strong></p>
+<ol>
+<li>要修改虚拟机OS</li>
+<li>guest知道的太多了（安全问题roll hammer）</li>
+</ol>
+<h3 id="53">5.3 两阶段地址翻译</h3>
+<p>硬件虚拟化❗</p>
+<p><img alt="第二阶段4级页表" src="图片\第二阶段4级页表.png" /></p>
+<p><img alt="两阶段地址翻译" src="图片\两阶段地址翻译.png" /></p>
+<p>与影子页表不同，影子页表虽然也会维护GPA到HPA的映射，但是这个转换表在MMU翻译时除了维护信息没有其他作用。而这里EL2的页表可以直接被MMU识别并参与翻译</p>
+<p>在虚拟机执行过程中，任何的GPA都会被硬件MMU通过<code>VTTBR_EL2</code>指向的第二级页表翻译成对应的HPA，整个过程无需VMM介入</p>
+<p><strong>地址翻译过程</strong></p>
+<ol>
+<li>先把<code>TTBR0_EL1</code>（GPA）（也就是第一级页表的L0页表地址），翻译成HPA_L0(这个HPA就是第一级页表的L0页表页的宿主机上的物理地址)</li>
+<li>然后拿着GVA的在L0页的offset，通过HPA_L0 + offset 得到L1页表的GPA</li>
+<li>用L1页表的GPA通过第二级页表翻译成HPA_L1</li>
+<li>然后拿着GVA的在L1页的offset，通过HPA_L1 + offset 得到L2页表的GPA</li>
+<li>用L2页表的GPA通过第二级页表翻译成HPA_L2</li>
+<li>然后拿着GVA的在L2页的offset，通过HPA_L2+ offset 得到L3页表的GPA</li>
+<li>用L3页表的GPA通过第二级页表翻译成HPA_L3</li>
+<li>然后拿着GVA的在L3页的offset，通过HPA_L3 + offset 得到GVA对应的HPA</li>
+</ol>
+<p><strong>VMID</strong> (Virtual Machine IDentifier) </p>
+<ul>
+<li>VMM为不同进程分配8/16 VMID，将VMID填写在VTTBR_EL2的高8/16位</li>
+<li>VMID位数由VTCR_EL2的第19位（VS位）决定</li>
+<li>避免刷新上个VM的TLB</li>
+</ul>
+<p><strong>优点</strong></p>
+<ol>
+<li>客户操作系统在更新页表时不会引起任何虚拟机下陷，性能好</li>
+<li>减少内存开销，不需要为每一个进程单独配置一个表，一个虚拟机一个第二阶段页表</li>
+<li>第一阶段页表和第二阶段页表引起的异常将分别唤醒虚拟机的虚拟机监控器，大大提升了缺页异常的处理性能</li>
+<li>不需要捕捉Guest Page Table的更新</li>
+<li>可以为一个虚拟机，配不同的第二阶段页表-&gt;可以防硬件漏洞</li>
+</ol>
+<p><strong>缺点</strong></p>
+<ol>
+<li>在发生TLB未命中的时候，最差情况下，需要经过24次访存</li>
+</ol>
+<h3 id="54-memory-ballooning">5.4 memory ballooning</h3>
+<p>🔺 提升性能的关键：打破层次</p>
+<p>为了解决虚拟机的内存超售，可以使用内存气球</p>
+<ol>
+<li>VMM需要回收虚拟机1的内存</li>
+<li>VMM通知虚拟机1里的气球驱动</li>
+<li>气球驱动调用客户操作系统提供的内存分配接口（kmalloc)，分配大量内存</li>
+<li>气球驱动在得到这些内存后，将内存对应的GPA发送给VMM</li>
+<li>VMM翻译为HPA，并把对应的内存数据保存到存储设备</li>
+</ol>
+<h2 id="6-io">6. I/O虚拟化</h2>
+<blockquote>
+<p>为什么要I/O虚拟化</p>
+</blockquote>
+<p>如果VM直接管理物理网卡：</p>
+<ol>
+<li><strong>正确性</strong>问题：所有VM都直接访问网卡</li>
+</ol>
+<p>– 所有VM都有相同的MAC地址、IP地址，无法正常收发网络包</p>
+<ol>
+<li><strong>安全性</strong>问题：恶意VM可以直接读取其他VM的数据</li>
+</ol>
+<p>除了直接读取所有网络包，还可能通过DMA访问其他内存</p>
+<p><strong>IO虚拟化目标</strong></p>
+<ol>
+<li>为虚拟机提供虚拟的外部设备</li>
+<li>隔离不同虚拟机对外部设备的直接访问</li>
+<li>提高物理设备的利用资源</li>
+</ol>
+<p><strong>实现IO虚拟化</strong></p>
+<ol>
+<li>设备模拟（Emulation）（纯软件）</li>
+<li>半虚拟化方式（Para-virtualization）</li>
+<li>设备直通（Pass-through）</li>
+</ol>
+<h3 id="61">6.1 软件模拟</h3>
+<p>关键：捕捉原生驱动的硬件指令 -&gt; trap and emulate</p>
+<p><strong>发包</strong></p>
+<ol>
+<li>VM进行MMIO操作，被trap，导致VM exit</li>
+<li>被KVM捕捉后，KVM发现自己处理不了，进QEMU</li>
+<li>QEMU从VM的memory里读出数据包，调用syscall</li>
+<li>进去EL2 ，发给真正的网卡</li>
+</ol>
+<p><img alt="设备模拟-发包" src="图片\设备模拟-发包.png" /></p>
+<p><strong>收包</strong></p>
+<p><img alt="设备模拟-收包" src="图片\设备模拟-收包.png" /></p>
+<p><strong>优点</strong></p>
+<ol>
+<li>可以模拟任意设备</li>
+</ol>
+<p>选择流行设备，支持较“久远”的OS（如e1000网卡） </p>
+<ol>
+<li>允许在中间拦截（Interposition）</li>
+</ol>
+<p>例如在QEMU层面检查网络内容</p>
+<ol>
+<li>不需要硬件修改</li>
+</ol>
+<p><strong>缺点</strong></p>
+<p>性能不佳</p>
+<h3 id="62">6.2 半虚拟化方式</h3>
+<p><strong>协同设计</strong></p>
+<ul>
+<li>虚拟机“知道”自己运行在虚拟化环境 </li>
+<li>虚拟机内运行前端(front-end)驱动 </li>
+<li>VMM内运行后端(back-end)驱动</li>
+<li>通过共享内存传递指令和命令</li>
+</ul>
+<p><strong>发包</strong></p>
+<p><img alt="半虚拟化-发包" src="图片\半虚拟化-发包.png" /></p>
+<p><strong>收包</strong></p>
+<p><img alt="半虚拟化-收包" src="图片\半虚拟化-收包.png" /></p>
+<p><strong>优点</strong></p>
+<ol>
+<li>性能优越</li>
+</ol>
+<p>多个MMIO/PIO指令可以整合成一次Hypercall，减少VM exit</p>
+<ol>
+<li>
+<p>VMM实现简单，不再需要理解物理设备接口</p>
+</li>
+<li>
+<p>QEMU不用实现模拟网卡了</p>
+</li>
+</ol>
+<p><strong>缺点</strong></p>
+<p>需要修改虚拟机操作系统内核</p>
+<h3 id="63">6.3 设备直通</h3>
+<p>虚拟机直接管理物理设备</p>
+<h4 id="1_1"><strong>问题1</strong></h4>
+<p>DMA恶意读写内存</p>
+<p><img alt="设备直通-DMA恶意读写内存" src="图片\设备直通-DMA恶意读写内存.png" /></p>
+<p>做DMA的地址是HPA，会绕过页表，就不能做权限控制了。</p>
+<p><strong>解决问题1</strong></p>
+<p>加页表（IO的页表）</p>
+<p><img alt="设备直通-DMA恶意读写内存-解决" src="图片\设备直通-DMA恶意读写内存-解决.png" /></p>
+<p>IO VA就是GPA（IO的位置是guest OS 设的所以是GPA）</p>
+<p><strong>IOMMU</strong>把GPA翻译成HPA（因为真的设备在HPA）</p>
+<h4 id="2_1">问题2</h4>
+<p>设备独占</p>
+<ul>
+<li>Scalability不够 </li>
+<li>设备被VM-1独占后，就无法被VM-2使用 </li>
+<li>如果一台物理机上运行16个虚拟机</li>
+<li>必须为这些虚拟机安装16个物理网卡</li>
+</ul>
+<p><strong>解决-问题2</strong></p>
+<p>▲ SR-IOV : 在设备层实现虚拟化（实现在设备上）</p>
+<ul>
+<li>SR-IOV是PCI-SIG组织确定的标准</li>
+<li>满足SRIOV标准的设备，在设备层实现设备复用</li>
+<li>能够创建多个Virtual Function(VF)，每一个VF分配给一个VM <ul>
+<li>负责进行数据传输，属于<strong>数据面</strong>（Data-plane） </li>
+</ul>
+</li>
+<li>物理设备被称为Physical Function(PF)，由Host管理<ul>
+<li>负责进行配置和管理，属于<strong>控制面</strong>（Control-plane）、</li>
+</ul>
+</li>
+<li>一个PF控制多个VF</li>
+<li>设备的功能</li>
+<li>确保VF之间的数据流和控制流彼此不影响</li>
+</ul>
+<p><img alt="设备直通-SR-IOV的使用" src="图片\设备直通-SR-IOV的使用.png" /></p>
+<p><strong>优点</strong></p>
+<ol>
+<li>性能优越</li>
+<li>简化VMM的设计与实现</li>
+</ol>
+<p><strong>缺点</strong></p>
+<ol>
+<li>需要特定硬件功能的支持（IOMMU、SRIOV等） </li>
+<li>不能实现Interposition：难以支持虚拟机热迁移</li>
+</ol>
+<h3 id="64-io">6.4 I/O虚拟化技术对比</h3>
+<p><img alt="IO虚拟化技术对比" src="图片\IO虚拟化技术对比.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

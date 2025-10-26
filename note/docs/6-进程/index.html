@@ -1,0 +1,1929 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="SFXiang">
+      
+      
+        <link rel="canonical" href="https://sfxiang.github.io/note/docs/6-%E8%BF%9B%E7%A8%8B/">
+      
+      
+        <link rel="prev" href="../5-%E5%86%85%E5%AD%98/">
+      
+      
+        <link rel="next" href="../7-%E8%B0%83%E5%BA%A6/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>进程 - 离岛便利店</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="离岛便利店" class="md-header__button md-logo" aria-label="离岛便利店" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            离岛便利店
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              进程
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="离岛便利店" class="md-nav__button md-logo" aria-label="离岛便利店" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    离岛便利店
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome to MkDocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../malloc%26free/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Malloc&free
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Note
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Note
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Docs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Docs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-%E5%A4%9A%E6%A0%B8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    多核
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    文件系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%B4%A9%E6%BA%83%E4%B8%80%E8%87%B4%E6%80%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    文件系统崩溃一致性
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-%E6%96%B0%E5%9E%8B%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    新型文件系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    设备
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-%E7%BD%91%E7%BB%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-%E8%99%9A%E6%8B%9F%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    系统虚拟化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-%E8%BD%BB%E9%87%8F%E7%BA%A7%E8%99%9A%E6%8B%9F%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    轻量级虚拟化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-%E7%A1%AC%E4%BB%B6%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    硬件结构
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-%E4%B8%AD%E6%96%AD%E5%BC%82%E5%B8%B8%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    中断异常与系统调用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    操作系统内核架构
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-%E5%86%85%E5%AD%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    内存
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    进程
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    进程
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 进程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 进程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-process-control-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 数据结构 Process Control Block
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 fork()
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 fork()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-copy-on-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2.1 写时拷贝（Copy-On-Write）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 fork的替代接口
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 fork的替代接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-vfork" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.1 vfork
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-posix_spawn" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.2 posix_spawn
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-clone" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.3 clone
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-exec" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 进程的执行 exec()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 线程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 线程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 多线程进程的地址空间
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 用户态线程与内核态线程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 用户态线程与内核态线程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2.1 线程模型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-tcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 线程的相关数据结构：TCB
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 线程的相关数据结构：TCB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-tcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.1 一对一模型的TCB可以分为两部分
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#232-tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.2 线程本地存储（TLS）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 线程的上下文切换
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 线程的上下文切换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#241" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4.1 线程上下文内容
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#242-chcoretcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4.2 ChCore的TCB结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#243" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4.3 线程上下文切换步骤
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4.3 线程上下文切换步骤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      第一步：进入内核态、保存上下文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      第二步：切换页表和内核栈
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      第三步：上下文恢复，返回用户态
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      小结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 纤程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 纤程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 一对一线程模型的局限
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 纤程（用户态线程）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 例子
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    调度
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    进程间通信
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-%E5%90%8C%E6%AD%A5%E5%8E%9F%E8%AF%AD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    同步原语
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Os
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/malloc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Linux高性能编程：malloc主要原理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Docs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Docs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Computer Science
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/dfx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    调试与故障排除
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/multicore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    多核与多处理器
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络与系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 进程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 进程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-process-control-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 数据结构 Process Control Block
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 fork()
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 fork()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-copy-on-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2.1 写时拷贝（Copy-On-Write）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 fork的替代接口
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 fork的替代接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-vfork" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.1 vfork
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-posix_spawn" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.2 posix_spawn
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-clone" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.3 clone
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-exec" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 进程的执行 exec()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 线程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 线程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 多线程进程的地址空间
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 用户态线程与内核态线程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 用户态线程与内核态线程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2.1 线程模型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-tcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 线程的相关数据结构：TCB
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 线程的相关数据结构：TCB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-tcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.1 一对一模型的TCB可以分为两部分
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#232-tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.2 线程本地存储（TLS）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 线程的上下文切换
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 线程的上下文切换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#241" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4.1 线程上下文内容
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#242-chcoretcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4.2 ChCore的TCB结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#243" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4.3 线程上下文切换步骤
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4.3 线程上下文切换步骤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      第一步：进入内核态、保存上下文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      第二步：切换页表和内核栈
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      第三步：上下文恢复，返回用户态
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      小结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 纤程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 纤程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 一对一线程模型的局限
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 纤程（用户态线程）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 例子
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">进程</h1>
+<h2 id="1">1. 进程</h2>
+<h3 id="11-process-control-block">1.1 数据结构 Process Control Block</h3>
+<ul>
+<li>
+<p>存放进程相关的各种信息</p>
+</li>
+<li>
+<p>进程的标识符、内存、打开的文件</p>
+</li>
+<li>
+<p>进程在切换时的状态（▲ 上下文切换会写PCB哦）</p>
+</li>
+<li>
+<p>PCB保存在<u>内核</u>中</p>
+<p><img alt="上下文切换" src="图片\上下文切换.png" /></p>
+</li>
+</ul>
+<h3 id="12-fork">1.2 fork()</h3>
+<p><strong>语义</strong>：为调用进程创建一个一模一样的新进程</p>
+<ul>
+<li>调用进程为父进程，新进程为子进程</li>
+<li>接口简单，无需任何参数</li>
+<li>fork后的两个进程均为独立进程 </li>
+<li>拥有不同的进程id </li>
+<li>可以并行执行，互不干扰（除非使用特定的接口）</li>
+<li>父进程和子进程会<u>共享部分数据结构（内存、文件等）</u><ul>
+<li>fork的父子进程有相同的PCB</li>
+<li>PCB里存了fd</li>
+<li>父子进程共用文件的<u>偏移量</u></li>
+</ul>
+</li>
+</ul>
+<h4 id="121-copy-on-write">1.2.1 写时拷贝（Copy-On-Write）</h4>
+<p><strong>基本思路</strong>：只拷贝内存映射，不拷贝实际内存 </p>
+<ul>
+<li>性能较好：一条映射至少对应一个4K的页面</li>
+<li>调用exec的情况里，减少了无用的拷贝(因为在调用fork之后立即调用exec会重置地址空间，之前内存拷贝毫无意义)</li>
+</ul>
+<p><strong>fork的优点</strong> </p>
+<ul>
+<li>接口非常简洁</li>
+<li>将进程“创建”和“执行”（exec）解耦，提高了灵活度</li>
+<li>刻画了进程之间的内在关系（进程树、进程组）</li>
+</ul>
+<h3 id="13-fork">1.3 fork的替代接口</h3>
+<h4 id="131-vfork">1.3.1 vfork</h4>
+<p><strong>vfork</strong>：类似于fork，但让父子进程共享同一地址空间。不会为子进程单独创建地址空间。因此父子进程中任一进程对内存的修改都会对另一进程产生影响。为了保证正确性，<code>vfork</code>会在结束后阻塞父进程，直到子进程调用<code>exec</code>或者退出为止。</p>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>连映射都不需要拷贝，性能更好</li>
+<li>"<code>vfork</code>+<code>exec</code>"与"<code>fork</code>+<code>exec</code>"相比省去了一次地址空间拷贝</li>
+</ul>
+<p><strong>缺点</strong>： </p>
+<ul>
+<li>只能用在”fork + exec”的场景中</li>
+<li>共享地址空间存在安全问题</li>
+</ul>
+<h4 id="132-posix_spawn">1.3.2 posix_spawn</h4>
+<p>posix_spawn是POSIX提供的另一种创建进程的方式，最初是为不支持fork的机器设计的</p>
+<p>相当于fork + exec</p>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>可扩展性、性能较好</li>
+<li>执行时间与原进程的内存无关</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>定制参数表达能力有限，不如fork灵活</li>
+</ul>
+<h4 id="133-clone">1.3.3 clone</h4>
+<p>类似于fork的精密控制版，允许应用程序通过参数对创建过程进行更多控制。</p>
+<h3 id="14-exec">1.4 进程的执行  exec()</h3>
+<p><img alt="exec" src="图片\exec.png" /></p>
+<p><code>exec</code>可以执行可执行文件</p>
+<p>在<code>fork</code>后调用<code>exec</code>，在载入可执行文件之后会重置地址空间</p>
+<p><code>exec</code>被调用时，操作系统：</p>
+<ol>
+<li>根据pathname指明的路径，将可执行文件的数据段和代码段载入当前进程的地址空间</li>
+<li>重新初始化堆栈(在这里，操作系统可以进行地址空间随机化ASLR，改变堆栈的起始地址)</li>
+<li>将PC寄存器设置到可执行文件代码段定义的入口点，该入口点最终会调用main</li>
+</ol>
+<h2 id="2">2. 线程</h2>
+<p>▲ 线程是调度的基本单位</p>
+<blockquote>
+<p>为什么需要线程</p>
+</blockquote>
+<ol>
+<li>创建进程的开销较大</li>
+<li>进程的隔离性过强（IPC）</li>
+<li>进程内部无法支持并行</li>
+</ol>
+<h3 id="21">2.1 多线程进程的地址空间</h3>
+<p><img alt="多线程进程的地址空间" src="图片\多线程进程的地址空间.png" /></p>
+<ul>
+<li>
+<p>分离的内核栈和用户栈</p>
+</li>
+<li>
+<p>当线程切换到内核中执行时，它的栈指针就会切换到对应的内核栈</p>
+</li>
+<li>
+<p>一个线程栈对应一个内核栈</p>
+</li>
+<li>
+<p>共享的其他区域</p>
+</li>
+<li>
+<p>堆是共享的！(malloc)</p>
+</li>
+</ul>
+<h3 id="22">2.2 用户态线程与内核态线程</h3>
+<p>根据线程是用户态应用还是由内核创建管理，可以分成两类：</p>
+<ul>
+<li>内核态线程</li>
+<li>由内核创建，线程相关信息存放在内核中</li>
+<li>内核可见，受内核管理</li>
+<li>用户态线程</li>
+<li>在应用态创建，线程相关信息主要存放在应用数据中</li>
+<li>内核不可见，不受内核直接管理</li>
+</ul>
+<p>与内核线程相比，用户态线程更加轻量级，创建开销更小，但功能也较为受限，与内核态相关的操作需要内核态线程协助才能完成。</p>
+<h4 id="221">2.2.1 线程模型</h4>
+<p><img alt="线程模型" src="图片\线程模型.png" /></p>
+<p><strong>多对一模型</strong></p>
+<p>由于只有一个内核态线程，因此每次只有一个用户态线程可以进入内核，其他需要内核服务的用户态线程会被阻塞。</p>
+<ul>
+<li>优点：内核管理简单 </li>
+<li>缺点：可扩展性差，无法适应多核机器的发展</li>
+</ul>
+<p><strong>一对一模型</strong></p>
+<ul>
+<li>优点：解决了多对一模型中的可扩展性问题</li>
+<li>缺点：内核线程数量大，开销大</li>
+</ul>
+<p>（主流操作系统都采用一对一模型）</p>
+<p><strong>多对多模型</strong></p>
+<ul>
+<li>优点：解决了可扩展性问题（多对一）和线程过多问题（一对一） </li>
+<li>缺点：管理更为复杂</li>
+</ul>
+<h3 id="23-tcb">2.3 线程的相关数据结构：TCB</h3>
+<h4 id="231-tcb">2.3.1 一对一模型的TCB可以分为两部分</h4>
+<ul>
+<li>内核态：与PCB结构类似</li>
+<li>– Linux中进程与线程使用的是同一种数据结构（task_struct） </li>
+<li>– <u>上下文切换中会使用</u></li>
+<li>应用态：可以由线程库定义</li>
+<li>Linux：pthread结构体 </li>
+<li>Windows：TIB（Thread Information Block）</li>
+<li>可以认为是内核TCB的扩展</li>
+</ul>
+<h4 id="232-tls">2.3.2 线程本地存储（TLS）</h4>
+<p>不同线程可能会执行相同的代码（线程不具有独立的地址空间，多线程共享代码段），对于全局变量，不同线程可能需要不同的拷贝（用于标明系统调用错误的errno）。使用TLS可以很方便的实现线程内的全局变量。</p>
+<ul>
+<li>线程库允许定义每个线程独有的数据</li>
+<li>
+<p>__thread int id; 会为每个线程定义一个独有的id变</p>
+</li>
+<li>
+<p>每个线程的TLS结构相似 </p>
+</li>
+<li>可通过TCB索引</li>
+<li>TLS寻址模式：基地址＋偏移量</li>
+<li>X86: 段页式 (fs寄存器) </li>
+<li>AArch64: 特殊寄存器tpidr_el0</li>
+</ul>
+<h3 id="24">2.4 线程的上下文切换</h3>
+<h4 id="241">2.4.1 线程上下文内容</h4>
+<p>即重要寄存器信息</p>
+<ul>
+<li>常规寄存器：x0-x30 </li>
+<li>程序计数器（PC）： elr_el1 </li>
+<li>栈指针：sp_el0 </li>
+<li>CPU状态（如条件码）：spsr_el1</li>
+</ul>
+<h4 id="242-chcoretcb">2.4.2 ChCore的TCB结构</h4>
+<p>内核态TCB：</p>
+<p><img alt="chcoreTCB" src="图片\chcoreTCB.png" /></p>
+<ul>
+<li>上半部分：线程的相关信息 </li>
+<li>下半部分：线程上下文 </li>
+<li>TCB下面为线程的内核栈 </li>
+<li>刚进入内核时的线程内核栈为空</li>
+<li>sp_el1指向栈顶</li>
+</ul>
+<h4 id="243">2.4.3 线程上下文切换步骤</h4>
+<h5 id="_2">第一步：进入内核态、保存上下文</h5>
+<p>应用线程可通过异常、中断或系统调用进入内核态</p>
+<ul>
+<li>运行状态将切换到内核态（EL1）</li>
+<li>开始使用sp_el1作为栈指针（用户栈切换到内核栈）</li>
+<li>保存应用线程的PC（elr_el1）</li>
+<li>保存应用线程的CPU状态（spsr_el1）</li>
+<li>以上均由硬件自动完成</li>
+</ul>
+<h5 id="_3">第二步：切换页表和内核栈</h5>
+<ul>
+<li>操作系统确定下一个被调度的线程（调度器决定） </li>
+<li>切换页表 </li>
+<li>将页表相关寄存器的值置为目标线程的页表基地址</li>
+<li>切换内核栈 – 找到目标内核栈的栈顶指针（目标线程的TCB） </li>
+<li>修改sp_el1的值至目标内核栈 </li>
+<li>🔺可以认为是线程执行的分界点（切换之后变为目标线程执行）</li>
+</ul>
+<h5 id="_4">第三步：上下文恢复，返回用户态</h5>
+<ul>
+<li>上下文恢复：取出栈上的值并存回寄存器</li>
+<li>返回用户态：调用eret，由硬件执行一系列操作</li>
+<li>将elr_el1中的返回地址存回PC </li>
+<li>改为使用sp_el0作为栈指针（内核栈切换到用户栈） </li>
+<li>将CPU状态设为spsr_el1中的值 </li>
+<li>运行状态切换为用户态（EL0）</li>
+</ul>
+<h5 id="_5">小结</h5>
+<p>🔺 共涉及两次权限等级切换、三次栈切换</p>
+<p>🔺 内核栈的切换是线程切换执行的“分界点</p>
+<p><img alt="上下文切换1" src="图片\上下文切换1.png" /></p>
+<h2 id="3">3. 纤程</h2>
+<h3 id="31">3.1 一对一线程模型的局限</h3>
+<ul>
+<li>复杂应用：对调度存在更多需求</li>
+<li>生产者消费者模型：生产者完成后，消费者最好马上被调度</li>
+<li>内核调度器的信息不足，无法完成及时调度 </li>
+<li>“短命”线程：执行时间亚毫秒级（如处理web请求）</li>
+<li>内核线程初始化时间较长，造成执行开销 </li>
+<li>线程上下文切换频繁，开销较大</li>
+</ul>
+<h3 id="32">3.2 纤程（用户态线程）</h3>
+<p><strong>比线程更加轻量级的运行时抽象</strong></p>
+<ul>
+<li>不单独对应内核线程 </li>
+<li>一个内核线程可以对应多个纤程（多对一）</li>
+</ul>
+<p><strong>优点</strong></p>
+<ol>
+<li>不需要创建内核线程，开销小</li>
+<li>上下文切换快（不需要进入内核）</li>
+<li>允许用户态自主调度，有助于做出更优的调度决策</li>
+</ol>
+<h3 id="33">3.3 例子</h3>
+<p><img alt="纤程" src="图片\纤程.png" /></p>
+<p><strong>优势</strong></p>
+<ul>
+<li>纤程切换及时</li>
+<li>当生产者完成任务后，可直接用户态切换到消费者</li>
+<li>对该线程来说是最优调度（内核调度器和难做到）</li>
+<li>高效上下文切换</li>
+<li>切换不进入内核态，开销小</li>
+<li>即时频繁切换也不会造成过大开销</li>
+</ul>
+<blockquote>
+<p>在Linux中，若在一个多线程进程的某个线程中使用fork创建一个子进程，则在子进程中会存在几个线程？创建出的子进程可能会导致什么问题？Linux为何要如此设计Fork的语义</p>
+</blockquote>
+<p>（1）只有调用fork的线程会存在于子进程中。</p>
+<p>（2）于此同时，由于fork的调用会拷贝整个内存空间的内容（包括锁、条件变量等）。因此，若调用fork的线程希望获得另一个线程所持有的锁时，会触发死锁。</p>
+<p>（3）（一种可能的解释）：Linux如此设计fork是出于<u>性能</u>上的考虑。若希望在fork时对所有线程都进行复制，<u>则需要确保所有线程被冻结在一个可被拷贝的状态</u>，之后才能对所有线程进行状态复制。这一冻结、拷贝过程会消耗大量的时间。对fork的常见用法（首先使用fork创建新进程，之后使用exec执行这一进程）而言，对所有线程进行拷贝是昂贵且无用的，因此在当前的Linux设计中并没有如此实现。</p>
+<blockquote>
+<p>对于分配大量内存的应用，为何及时采用了写时拷贝（Copy-on-write，COW）优化后，<code>fork</code>的性能仍然比<code>vfork</code>要差？请尝试利用<code>vfork</code>的思路对<code>fork</code>进行优化，从而在不改变<code>fork</code>语义的前提下，提升<code>fork</code>的性能</p>
+</blockquote>
+<p>原因：相较于使用了写时拷贝优化的fork而言，vfork更进一步，<u>消除了对内存映射关系（页表）的拷贝</u>，因此，对于消耗了大量内存的应用而说，fork对页表的拷贝仍然需要消耗一定时间，其性能相较于vfork更慢</p>
+<p>可能优化方法：在fork时，可以选择仅拷贝初级页表，在后续第一次访问某一内存地址时，再对后续几级的页表进行拷贝。</p>
+<blockquote>
+<p>在像<code>ChCore</code>一样的单进程多线程的操作系统中，操作系统通常以线程为粒度进行调度。在一些调度的实现中，在从属于同一个进程的两个不同线程之间进行上下文切换所消耗的时间比在从属于不同进程的两个不同线程之间进行切换耗时更低，试解释其原因</p>
+</blockquote>
+<p>从属于同一个进程的线程共享同一个地址空间与内存映射，因此，在同一进程内不同线程间进行上下文切换时，无需进行页表切换、TLB刷新等操作，相较而言性能更快</p>
+<blockquote>
+<p>对于像协程一样的用户态线程而言，由于所有的协程均从属于同一个内核态线程，因此同一时间仅能同时运行一个协程。在这一情况下，为何协程仍然能够提升应用性能？对于哪类应用，协程能够尽可能高的提升系统性能</p>
+</blockquote>
+<p>（1）由于频繁的线程创建和线程上下文切换会消耗一些时间，因此，对于需要创建大量运行时间极短的线程的应用（如网络服务器等）而言，使用协程能够减少此类开销，提升性能。</p>
+<p>（2）在应用程序内使用协程后，应用程序能够基于其逻辑进行更加合理的调度，在很多情况下更能够提升性能。如一个生产者、消费者的例子中，可以使用协程，确保消费者在生产者之后进行执行</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

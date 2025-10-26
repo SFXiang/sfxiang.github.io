@@ -1,0 +1,1736 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="SFXiang">
+      
+      
+        <link rel="canonical" href="https://sfxiang.github.io/note/docs/17-%E8%BD%BB%E9%87%8F%E7%BA%A7%E8%99%9A%E6%8B%9F%E5%8C%96/">
+      
+      
+        <link rel="prev" href="../16-%E8%99%9A%E6%8B%9F%E5%8C%96/">
+      
+      
+        <link rel="next" href="../2-%E7%A1%AC%E4%BB%B6%E7%BB%93%E6%9E%84/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>轻量级虚拟化 - 离岛便利店</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="离岛便利店" class="md-header__button md-logo" aria-label="离岛便利店" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            离岛便利店
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              轻量级虚拟化
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="离岛便利店" class="md-nav__button md-logo" aria-label="离岛便利店" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    离岛便利店
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome to MkDocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../malloc%26free/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Malloc&free
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Note
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Note
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Docs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Docs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-%E5%A4%9A%E6%A0%B8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    多核
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    文件系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%B4%A9%E6%BA%83%E4%B8%80%E8%87%B4%E6%80%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    文件系统崩溃一致性
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-%E6%96%B0%E5%9E%8B%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    新型文件系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    设备
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-%E7%BD%91%E7%BB%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-%E8%99%9A%E6%8B%9F%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    系统虚拟化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    轻量级虚拟化
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    轻量级虚拟化
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-faasserverless" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. FaaS与Serverless
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-chroot" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. CHROOT
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-linux-container-lxc" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. LinuX Container (LXC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. LinuX Container (LXC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-mount-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Mount Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-ipc-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 IPC Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-network-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Network Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-pid-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 PID Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-user-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 User Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-uts-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6 UTS Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-cgroup-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.7 Cgroup Namespace
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 执行环境间的性能隔离
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 执行环境间的性能隔离">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-cgroups" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Cgroups
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-cgroups" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Cgroups的常用术语
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-enclave" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 基于硬件ENCLAVE的隔离
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 基于硬件ENCLAVE的隔离">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 基于权限隔离的隔离方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 硬件内存加密与保护机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-enclave" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 Enclave与进程的关系
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-remote-attestation" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4 远程验证（Remote Attestation）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-amd-sev" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.5 AMD SEV
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-risc-venclave" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.6 RISC-V平台的Enclave
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-%E7%A1%AC%E4%BB%B6%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    硬件结构
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-%E4%B8%AD%E6%96%AD%E5%BC%82%E5%B8%B8%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    中断异常与系统调用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    操作系统内核架构
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-%E5%86%85%E5%AD%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    内存
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-%E8%BF%9B%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    进程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    调度
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    进程间通信
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-%E5%90%8C%E6%AD%A5%E5%8E%9F%E8%AF%AD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    同步原语
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Os
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/malloc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Linux高性能编程：malloc主要原理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Docs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Docs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Computer Science
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/dfx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    调试与故障排除
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/multicore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    多核与多处理器
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络与系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-faasserverless" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. FaaS与Serverless
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-chroot" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. CHROOT
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-linux-container-lxc" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. LinuX Container (LXC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. LinuX Container (LXC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-mount-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Mount Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-ipc-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 IPC Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-network-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Network Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-pid-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 PID Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-user-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 User Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-uts-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6 UTS Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-cgroup-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.7 Cgroup Namespace
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 执行环境间的性能隔离
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 执行环境间的性能隔离">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-cgroups" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Cgroups
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-cgroups" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Cgroups的常用术语
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-enclave" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 基于硬件ENCLAVE的隔离
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 基于硬件ENCLAVE的隔离">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 基于权限隔离的隔离方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 硬件内存加密与保护机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-enclave" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 Enclave与进程的关系
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-remote-attestation" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4 远程验证（Remote Attestation）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-amd-sev" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.5 AMD SEV
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-risc-venclave" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.6 RISC-V平台的Enclave
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">轻量级虚拟化</h1>
+<h2 id="1-faasserverless">1. FaaS与Serverless</h2>
+<p><strong>云厂商普遍用虚拟化来隔离</strong></p>
+<ul>
+<li>优势 </li>
+<li>可以运行完整的软件栈，包括不同的操作系统 </li>
+<li>灵活的整体资源分配（支持动态迁移） </li>
+<li>方便的添加、删除、备份（只需文件操作）</li>
+<li>虚拟机之间的强隔离（唯一能抵御 fork bomb 的方法） </li>
+<li>问题：太重 </li>
+<li>云：性能损失，尤其是I/O虚拟化 </li>
+<li>用户：两层操作系统导致资源浪费</li>
+</ul>
+<p><strong>函数即服务的特点</strong></p>
+<ul>
+<li>orkload特点 –</li>
+<li>无状态（stateless） </li>
+<li>运行时间非常短（秒级） </li>
+<li>两个重要的性能指标 </li>
+<li>启动时间 </li>
+<li>运行密度</li>
+</ul>
+<h2 id="2-chroot">2. CHROOT</h2>
+<p><strong>Chroot效果</strong></p>
+<ul>
+<li>控制进程能够访问哪些目录子树 </li>
+<li>改变进程所属的根目录 </li>
+<li>进程只能看到根目录下属的文件</li>
+</ul>
+<p><strong>Chroot原理</strong></p>
+<ul>
+<li>进程只能从根目录向下开始查找文件 </li>
+<li>操作系统内部修改了根目录的位置 </li>
+<li>一个简单的设计 </li>
+<li>内核为每个用户记录一个根目录路径 </li>
+<li>进程打开文件时内核从该用户的根目录开始查找</li>
+<li>上述设计有什么问题？ </li>
+<li>遇到类似“..”的路径会发生什么？<ul>
+<li>特殊检查根目录下的“..” </li>
+<li>使得“/..”与“/”等价 </li>
+<li>无法通过“..”打破隔离</li>
+</ul>
+</li>
+<li>一个用户想要使不同进程有不同的根目录怎么办？<ul>
+<li>每个TCB都指向一个root目录 </li>
+<li>一个用户可以对多个进程chroot</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-linux-container-lxc">3. LinuX Container (LXC)</h2>
+<ul>
+<li>安全隔离 – 基于namespace机制 </li>
+<li>性能隔离 – Linux cgroup</li>
+<li><img alt="LinuX Container资源" src="图片\LinuX Container资源.png" /></li>
+</ul>
+<h3 id="31-mount-namespace">3.1 Mount Namespace</h3>
+<ul>
+<li>容器内外可部分共享文件系</li>
+<li>假设主机操作系统上运行了一个容器</li>
+<li>Step-1：主机OS准备从/mnt目录下的ext4文件系统中读取数据</li>
+<li>Step-2：容器中进程在/mnt目录下挂载了一个xfs文件系统</li>
+<li>Step-3：主机操作系统可能读到错误数据</li>
+</ul>
+<p><strong>实现</strong></p>
+<ul>
+<li>设计思路</li>
+<li>在内核中分别记录每个NS中对于挂载 点的修改</li>
+<li>访问挂载点时，内核根据<u>当前NS</u>的记 录查找文件 </li>
+<li>每个NS有独立的文件系统树 </li>
+<li>新NS会<u>拷贝</u>一份父NS的文件系统树</li>
+<li>修改挂载点只会反映到自己NS的文件系统树</li>
+</ul>
+<p><img alt="nsp-mount" src="图片\nsp-mount.png" /></p>
+<h3 id="32-ipc-namespace">3.2 IPC Namespace</h3>
+<ul>
+<li>假设有两个容器A和B</li>
+<li>A中进程使用名为“ my_mem ”共享内存进行数据共享 </li>
+<li>B中进程也使用名为“ my_mem ”共享内存进行通信 </li>
+<li>B中进程可能收到A中进程的数据，导致出错以及数据泄露</li>
+</ul>
+<p><strong>不好的设计</strong></p>
+<ul>
+<li>在内核中创建IPC对象时，贴上对应NS的标签 </li>
+<li>进程访问IPC对象时内核来判断是否允许访问该对象</li>
+<li><strong>问题</strong>：可能有timing side channel隐患 ；对于同名的IPC对象不好处理</li>
+</ul>
+<p><strong>IPC Namespace的实现</strong></p>
+<ul>
+<li>使每个IPC对象只能属于一个NS </li>
+<li>每个NS单独记录属于自己的IPC对象</li>
+<li>进程只能在当前NS中寻找IPC对象</li>
+<li><img alt="nsp-IPC" src="图片\nsp-IPC.png" /></li>
+</ul>
+<h3 id="33-network-namespace">3.3 Network Namespace</h3>
+<ul>
+<li>假设有两个容器均提供网络服务 </li>
+<li>两个容器的外部用户向同一IP发送网络服务请求 </li>
+<li>主机操作系统不知道该将网络包转发给哪个容器</li>
+</ul>
+<p><strong>虚拟机</strong></p>
+<p><img alt="nsp-network虚拟机" src="图片\nsp-network虚拟机.png" /></p>
+<p><strong>Network Namespace的实现</strong></p>
+<ul>
+<li>每个NS拥有一套独立的网络资源 </li>
+<li>包括IP地址、网络设备等 </li>
+<li>新NS默认只有一个loopback设备</li>
+<li>其余设备需后续分配或从外部加入</li>
+<li>图例 </li>
+<li>创建相连的veth虚拟设备对</li>
+<li>一端加入NS即可连通网络</li>
+<li>分配IP后可分别与外界通信</li>
+</ul>
+<p><img alt="nsp-network" src="图片\nsp-network.png" /></p>
+<h3 id="34-pid-namespace">3.4 PID Namespace</h3>
+<ul>
+<li>假设有容器内存在一个恶意进程 </li>
+<li>恶意进程向容器外进程发送SIGKILL信号</li>
+<li>
+<p>主机操作系统或其他容器中的正常进程会被杀死</p>
+</li>
+<li>
+<p>直接的想法 </p>
+</li>
+<li>将每个NS中的进程放在一起管理，不同NS中的进程相互隔离 </li>
+<li>存在的问题 </li>
+<li>进程间关系如何处理（比如父子进程）？</li>
+<li>更进一步 </li>
+<li>允许<u>父NS</u>看到<u>子NS</u>中的进程，保留父子关系</li>
+</ul>
+<p><strong>PID Namespace的实现</strong></p>
+<p><strong><img alt="nsp-PID" src="图片\nsp-PID.png" /></strong></p>
+<h3 id="35-user-namespace">3.5 User Namespace</h3>
+<ul>
+<li>假设一个恶意用户在容器内获取了root权限</li>
+<li>恶意用户相当于拥有了<u>整个系统</u>的最高权限 </li>
+<li>可以窃取其他容器甚至主机操作系统的隐私信息</li>
+<li>可以控制或破坏系统内的各种服务</li>
+</ul>
+<p><strong>User Namespace的实现</strong></p>
+<ul>
+<li>对NS内外的UID和GID进行映射</li>
+<li>允许普通用户在容器内有更高权限<ul>
+<li>基于Linux Capability机制</li>
+</ul>
+</li>
+<li>容器内root用户在容器外无特权 <ul>
+<li>只是普通用户 </li>
+</ul>
+</li>
+<li>图例 – 普通用户在子NS中是root用户</li>
+</ul>
+<blockquote>
+<p>如果容器内root要执行特权操作怎么办？ </p>
+</blockquote>
+<ul>
+<li>insmod？一旦允许在内核中插入驱动，则拥有最高权限 </li>
+<li>
+<p>关机/重启？整个云服务器会受影响 </p>
+</li>
+<li>
+<p>从内核角度来看，仅仅是普通用户 </p>
+</li>
+<li>
+<p>限制系统调用 – Seccomp机制</p>
+</li>
+</ul>
+<h3 id="36-uts-namespace">3.6 UTS Namespace</h3>
+<ul>
+<li>每个NS拥有独立的hostname等名称 </li>
+<li>便于分辨主机操作系统及其上的多个容器</li>
+</ul>
+<h3 id="37-cgroup-namespace">3.7 Cgroup Namespace</h3>
+<ul>
+<li>cgroupfs的实现向容器内暴露cgroup根目录</li>
+<li>增强隔离性：避免向容器内泄露主机操作系统信息 </li>
+<li>增强可移植性：取消cgroup路径名依赖</li>
+</ul>
+<h2 id="4">4. 执行环境间的性能隔离</h2>
+<h3 id="41-cgroups">4.1 Cgroups</h3>
+<ul>
+<li>Cgroups是Linux内核（从Linux2.6.24开始）提供的一种<u>资源隔离的功能</u></li>
+<li>Cgroups可以做什么</li>
+<li>将线程分组</li>
+<li>对每组线程使用的多种物理资源进行限制和监控</li>
+<li>怎么用Cgroups </li>
+<li>名为cgroupfs的伪文件系统提供了用户接口</li>
+</ul>
+<h3 id="42-cgroups">4.2 Cgroups的常用术语</h3>
+<h2 id="5-enclave">5. 基于硬件ENCLAVE的隔离</h2>
+<p><strong>硬件提供不同粒度的隔离环境</strong></p>
+<p><img alt="硬件提供不同粒度的隔离环境" src="图片\硬件提供不同粒度的隔离环境.png" /></p>
+<p><strong>Enclave的隔离方法</strong></p>
+<ol>
+<li>基于权限控制 – 使操作系统没有权限访问用户的数据</li>
+<li>基于加密 – 操作系统即使访问用户数据，也无法解密</li>
+<li>基于权限控制+加密 – 隔离防御软件攻击，加密防御硬件攻击</li>
+</ol>
+<h3 id="51">5.1 基于权限隔离的隔离方法</h3>
+<ol>
+<li>基于<strong>预留</strong>的隔离（硬件）</li>
+<li>例如：PRM（Processor Reserved Memory）</li>
+<li>CPU预留一部分物理内存，不提供给操作系统 </li>
+<li>基于<strong>页表</strong>的隔离（操作系统） </li>
+<li>例如：保证操作系统无法映射应用的物理内存页</li>
+<li>问题：页表是由操作系统自己管理的，监守自盗？</li>
+<li>基于<strong>插桩</strong>的隔离（编译器） </li>
+<li>例如：SFI（Software Fault Isolation）</li>
+<li>在每次访存前插入边界检查，性能损失较大</li>
+</ol>
+<p><strong>Intel SGX</strong></p>
+<ul>
+<li>SGX: Software Guard eXtension </li>
+<li>2015年首次引入Intel Skylake架构</li>
+<li>保护程序和代码在运行时的安全（data in-run）<ul>
+<li>其他安全包括：存储时安全和传输时安全</li>
+</ul>
+</li>
+<li>关键技术 – Enclave内部与外部的隔离 – 内存加密与完整性保护 – 远程验证</li>
+</ul>
+<h3 id="52">5.2 硬件内存加密与保护机制</h3>
+<ul>
+<li>硬件加密保护隐私性 </li>
+<li>CPU外皆为密文，包括内存、存储、网络等</li>
+<li>CPU内部为明文，包括各级Cache与寄存器 </li>
+<li>数据进出CPU时，由进行加密和解密操作 </li>
+<li>硬件Merkle Tree保护完整性 </li>
+<li>对内存中数据计算一级hash，对一级hash计算二级hash，形成树 </li>
+<li>CPU内部仅保存root hash，其它hash保存在不可信的内存中 </li>
+<li>当内存中的数据被修改时，更新Merkle Tree</li>
+</ul>
+<h3 id="53-enclave">5.3 Enclave与进程的关系</h3>
+<ul>
+<li>
+<p>Enclave是进程的一部分 </p>
+</li>
+<li>
+<p>Enclave内外共享一个虚拟地址空间 </p>
+</li>
+<li>
+<p>Enclave内部可以访问外部的内存 • 反之则不行 </p>
+</li>
+<li>
+<p>创建Enclave的过程 </p>
+</li>
+<li>
+<p>OS创建进程 </p>
+</li>
+<li>
+<p>OS分配虚拟地址空间</p>
+</li>
+<li>
+<p>OS将Enclave的code加载到EPC中 </p>
+<p>并将EPC映射到Enclave的虚拟地址 </p>
+<p>循环3，完成所有code加载和映射 </p>
+</li>
+<li>
+<p>完成进程创建</p>
+</li>
+</ul>
+<p><img alt="Enclave与进程的关系" src="图片\Enclave与进程的关系.png" /></p>
+<h3 id="54-remote-attestation">5.4 远程验证（Remote Attestation）</h3>
+<blockquote>
+<p>要解决的问题：如何远程判断某个主体是Enclave？</p>
+</blockquote>
+<ul>
+<li>例如，如何判断某个在云端的服务运行环境是安全的 </li>
+<li>必须在认证之后，再进行下一步的操作，例如发送数据</li>
+<li><img alt="远程验证" src="图片\远程验证.png" /></li>
+</ul>
+<h3 id="55-amd-sev">5.5 AMD SEV</h3>
+<p><img alt="AMD SEV" src="图片\AMD SEV.png" /></p>
+<h3 id="56-risc-venclave">5.6 RISC-V平台的Enclave</h3>
+<p><img alt="RISC-V平台的Enclave" src="图片\RISC-V平台的Enclave.png" /></p>
+<blockquote>
+<p>假设同一台物理机上运行着20台虚拟机，每台虚拟机内部有20个进程。若我们采用影子页表（Shadow Page Table）的方式实现内存虚拟化，则共需要多少个影子页表？若采用第二阶段页表的方式来实现内存虚拟化，则共需要多少个第二阶段页表？</p>
+</blockquote>
+<p>影子页表：20*20=400（每个进程一个影子页表）</p>
+<p>第二阶段页表：20（每个虚拟机一个第二阶段页表）。</p>
+<blockquote>
+<p>第二阶段页表和影子页表的性能表现在不同种类的应用上各有千秋，请列举两者各适用于什么种类的应用并说明原因。</p>
+</blockquote>
+<p>对于第二阶段页表而言，由于其内存地址翻译既需要查询第一阶段页表有需要查询第二阶段页表，将GVA转化为HPA的过程要更慢；</p>
+<p>对于影子页表而言，每当从GVA到GPA的内存映射发生改变时，都需要虚拟机管理器对影子页表进行修改，修改过程开销更高。</p>
+<p>因此，对于TLB miss经常发生，需要经常查询页表进行地址翻译的应用而言，采用影子页表更加高效；对于内存映射经常改变的应用而言，则更适合采用第二阶段页表</p>
+<blockquote>
+<p>IOMMU是在IO虚拟化中广泛应用的一类硬件。为何在IO虚拟化中要引入IOMMU这类硬件</p>
+</blockquote>
+<p>IOMMU用于保护虚拟机的隐私内存不会被其他虚拟机发起的恶意DMA请求所访问。SMMU内存储着GPA与HPA，负责从IOVA-&gt;GPA-&gt;HPA的地址翻译。</p>
+<blockquote>
+<p>容器或虚拟机两种技术通常被用于位于同一物理机上的不同执行环境之间的隔离，此外，近年来新出现的gVisor、AWS Firecracker也已被广泛应用与隔离执行环境中。请尝试分析四种方法在隔离性上的区别</p>
+</blockquote>
+<p>通常而言，操作系统提供给用户程序的接口多于虚拟机管理器提供给虚拟机的接口数目，且操作系统内核的代码相较于虚拟机的代码更为复杂，因此，共享同一个操作系统内核的<strong>容器</strong>相较于传统的虚拟机而言<u>隔离性更弱</u>。</p>
+<p>为了解决共享操作系统内核的问题，<strong>gVisor</strong>通过<u>插桩系统调用</u>等方式，在容器的基础上减少了不同实例间共享的接口的数目，因此，<u>隔离性相对于容器而言更强</u>。</p>
+<p>而<strong>AWS Firecracker</strong>则采用了在host的用户空间内共享网桥等方式减少虚拟机的启动等开销，作为代价，不同实例间共享了更多接口的Firecracker的<u>隔离性可能弱于传统的虚拟机</u>。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

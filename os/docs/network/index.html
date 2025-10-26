@@ -1,0 +1,1805 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="SFXiang">
+      
+      
+        <link rel="canonical" href="https://sfxiang.github.io/os/docs/network/">
+      
+      
+        <link rel="prev" href="../multicore/">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>网络与系统 - 离岛便利店</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="离岛便利店" class="md-header__button md-logo" aria-label="离岛便利店" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            离岛便利店
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              网络与系统
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="离岛便利店" class="md-nav__button md-logo" aria-label="离岛便利店" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    离岛便利店
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome to MkDocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../malloc%26free/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Malloc&free
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Note
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Note
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Docs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Docs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../note/docs/10-%E5%A4%9A%E6%A0%B8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    多核
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../note/docs/11-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    文件系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../note/docs/12-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%B4%A9%E6%BA%83%E4%B8%80%E8%87%B4%E6%80%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    文件系统崩溃一致性
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../note/docs/13-%E6%96%B0%E5%9E%8B%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    新型文件系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../note/docs/14-%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    设备
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../note/docs/15-%E7%BD%91%E7%BB%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../note/docs/16-%E8%99%9A%E6%8B%9F%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    系统虚拟化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../note/docs/17-%E8%BD%BB%E9%87%8F%E7%BA%A7%E8%99%9A%E6%8B%9F%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    轻量级虚拟化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../note/docs/2-%E7%A1%AC%E4%BB%B6%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    硬件结构
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../note/docs/3-%E4%B8%AD%E6%96%AD%E5%BC%82%E5%B8%B8%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    中断异常与系统调用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../note/docs/4-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    操作系统内核架构
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../note/docs/5-%E5%86%85%E5%AD%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    内存
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../note/docs/6-%E8%BF%9B%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    进程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../note/docs/7-%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    调度
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../note/docs/8-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    进程间通信
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../note/docs/9-%E5%90%8C%E6%AD%A5%E5%8E%9F%E8%AF%AD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    同步原语
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Os
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../malloc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Linux高性能编程：malloc主要原理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Docs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Docs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Computer Science
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dfx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    调试与故障排除
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multicore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    多核与多处理器
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    网络与系统
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络与系统
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      引言
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、网络包的收发流程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、网络协议栈
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、网络协议栈">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 各层功能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 端到端观点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、网络编程模型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、网络编程模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 套接字编程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 I/O多路复用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、操作系统的网络实现
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、操作系统的网络实现">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Linux宏内核实现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-chcore" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 ChCore微内核实现
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、网络系统的优化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、网络系统的优化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 硬件加速方案
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 软件优化方案
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 智能网卡
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、思考题详细解答
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、思考题详细解答">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      思考题1：网络协议栈的分层设计有哪些优点？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      思考题2：请描述端到端观点，并列举适合与不适合的场景。
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      思考题3：结合端到端观点，如何看待TCP和链路层的纠错冗余？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4chcoreipc" class="md-nav__link">
+    <span class="md-ellipsis">
+      思考题4：ChCore微内核模型下，网络包处理的IPC次数及优化设计。
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      思考题5：分析宏内核、微内核及库操作系统协议栈的优缺点。
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      思考题6：设计入侵检测系统（IDS）方案，最小化转发延迟。
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      结论
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      引言
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、网络包的收发流程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、网络协议栈
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、网络协议栈">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 各层功能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 端到端观点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、网络编程模型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、网络编程模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 套接字编程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 I/O多路复用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、操作系统的网络实现
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、操作系统的网络实现">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Linux宏内核实现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-chcore" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 ChCore微内核实现
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、网络系统的优化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、网络系统的优化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 硬件加速方案
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 软件优化方案
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 智能网卡
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、思考题详细解答
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、思考题详细解答">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      思考题1：网络协议栈的分层设计有哪些优点？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      思考题2：请描述端到端观点，并列举适合与不适合的场景。
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      思考题3：结合端到端观点，如何看待TCP和链路层的纠错冗余？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4chcoreipc" class="md-nav__link">
+    <span class="md-ellipsis">
+      思考题4：ChCore微内核模型下，网络包处理的IPC次数及优化设计。
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      思考题5：分析宏内核、微内核及库操作系统协议栈的优缺点。
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      思考题6：设计入侵检测系统（IDS）方案，最小化转发延迟。
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      结论
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">网络与系统</h1>
+<h2 id="_2">引言</h2>
+<p>本文档《第二十章网络与系统》系统性地介绍了计算机网络的基本原理、协议栈设计、操作系统支持以及现代优化方案。网络作为分布式系统的核心工具，通过TCP/IP协议解决了异构设备互联问题，并催生了搜索引擎、在线支付等互联网应用。本章从操作系统角度出发，重点解析网络包的收发流程、协议栈分层、编程模型、系统实现及性能优化技术。以下报告将详细总结文档重点内容，嵌入相关图表，并逐一解答章末思考题。</p>
+<hr />
+<h2 id="_3">一、网络包的收发流程</h2>
+<p>网络包的收发是网络通信的基础过程。当用户通过浏览器访问网页（如本书主页<a href="https://ipads.se.sjtu.edu.cn/ospi/">https://ipads.se.sjtu.edu.cn/ospi/</a>）时，操作系统会生成网络包，其发送过程自上而下经过协议栈各层，每层添加头部信息；接收过程则自底向上解析头部。这一流程确保了数据可靠传输。</p>
+<ul>
+<li>
+<p>​<strong>发送阶段</strong>​：应用层生成请求后，传输层添加TCP头部（保证可靠性），网络层添加IP头部（用于寻址），链路层添加MAC头部（物理地址），最终通过物理层发送。TCP协议通过确认应答和超时重传机制确保可靠性，而DNS系统将域名解析为IP地址（如nslookup查询IPADS服务器IP为202.120.40.85）。</p>
+<p><img alt="" src="https://hunyuan-plugin-private-1258344706.cos.ap-nanjing.myqcloud.com/pdf_youtu/img/7cb1e619ae207a4d710802d5a71b6da3-image.png?q-sign-algorithm=sha1&amp;q-ak=AKID372nLgqocp7HZjfQzNcyGOMTN3Xp6FEA&amp;q-sign-time=1761320087%3B2076680087&amp;q-key-time=1761320087%3B2076680087&amp;q-header-list=host&amp;q-url-param-list=&amp;q-signature=a37067a99f2f68c7f21381e791932fe6126cbc57" /></p>
+</li>
+<li>
+<p>​<strong>接收阶段</strong>​：网络包到达目标服务器后，反向解析各层头部，最终由应用层（如Web服务器）处理请求并返回数据。</p>
+<p><img alt="" src="https://hunyuan-plugin-private-1258344706.cos.ap-nanjing.myqcloud.com/pdf_youtu/img/adc2601e10278ff538bc90cf47997165-image.png?q-sign-algorithm=sha1&amp;q-ak=AKID372nLgqocp7HZjfQzNcyGOMTN3Xp6FEA&amp;q-sign-time=1761320089%3B2076680089&amp;q-key-time=1761320089%3B2076680089&amp;q-header-list=host&amp;q-url-param-list=&amp;q-signature=11694d46ecdb569cba61df05e489490cbe0cecd3" /></p>
+</li>
+</ul>
+<p>关键点：</p>
+<ul>
+<li>
+<p>TCP/IP协议实现异构网络互联，Vinton Gray Cerf和Robert Elliot Kahn因设计该协议获2004年图灵奖。</p>
+</li>
+<li>
+<p>数据帧（Frame）是网络传输的基本单位，以太网规定载荷最大1500字节，超时需分帧。</p>
+</li>
+</ul>
+<hr />
+<h2 id="_4">二、网络协议栈</h2>
+<p>网络协议栈采用分层设计，TCP/IP五层模型（物理层、链路层、网络层、传输层、应用层）已成为事实标准，与OSI七层模型对应。分层设计简化了模块化开发，但需权衡效率与可靠性。</p>
+<h3 id="21">2.1 各层功能</h3>
+<ul>
+<li>
+<p>​<strong>物理层与链路层</strong>​：物理层负责传输介质（如光纤、电磁波），链路层通过网卡（NIC）和MAC地址标识设备。数据帧包含头部、载荷和尾部，网卡驱动处理帧并交由上层协议。</p>
+<p><img alt="" src="https://hunyuan-plugin-private-1258344706.cos.ap-nanjing.myqcloud.com/pdf_youtu/img/50783fd2a7dcef7ae9c94c2758dfc45b-image.png?q-sign-algorithm=sha1&amp;q-ak=AKID372nLgqocp7HZjfQzNcyGOMTN3Xp6FEA&amp;q-sign-time=1761320092%3B2076680092&amp;q-key-time=1761320092%3B2076680092&amp;q-header-list=host&amp;q-url-param-list=&amp;q-signature=1cdc161c8763c7a673b884b2bc9faae64e675f40" /></p>
+</li>
+<li>
+<p>​<strong>网络层</strong>​：IP协议（IPv4/IPv6）使用IP地址进行逻辑寻址，支持子网划分和路由。ICMP协议用于网络通达性检查（如ping命令）。</p>
+</li>
+<li>
+<p>​<strong>传输层</strong>​：通过端口号定位进程，TCP提供可靠连接（滑动窗口、重传机制），UDP适用于低延迟场景（如视频流）。</p>
+<p><img alt="" src="https://hunyuan-plugin-private-1258344706.cos.ap-nanjing.myqcloud.com/pdf_youtu/img/bb73e0a4bd6953ac3df4c3053b065b07-image.png?q-sign-algorithm=sha1&amp;q-ak=AKID372nLgqocp7HZjfQzNcyGOMTN3Xp6FEA&amp;q-sign-time=1761320093%3B2076680093&amp;q-key-time=1761320093%3B2076680093&amp;q-header-list=host&amp;q-url-param-list=&amp;q-signature=771cceba9ef95779ec3cf3b84cf4f7725fb6728c" /></p>
+</li>
+</ul>
+<h3 id="22">2.2 端到端观点</h3>
+<p>端到端观点（End-to-End Argument）强调可靠性应由应用层保证，底层协议力求简单。例如，文件传输中，网络层重传机制可能不适用于音视频实时通信，应用层可自主实现纠错。该观点符合奥卡姆剃刀法则，与操作系统外核设计相似。</p>
+<p><img alt="" src="https://hunyuan-plugin-private-1258344706.cos.ap-nanjing.myqcloud.com/pdf_youtu/img/6e912582049d480c445e204119ba42a0-image.png?q-sign-algorithm=sha1&amp;q-ak=AKID372nLgqocp7HZjfQzNcyGOMTN3Xp6FEA&amp;q-sign-time=1761320095%3B2076680095&amp;q-key-time=1761320095%3B2076680095&amp;q-header-list=host&amp;q-url-param-list=&amp;q-signature=8696a27f62329e42c58a9ea2cc49f91e0e992868" /></p>
+<hr />
+<h2 id="_5">三、网络编程模型</h2>
+<p>网络编程通过套接字（Socket）接口实现进程间通信，支持C/S模型。</p>
+<h3 id="31">3.1 套接字编程</h3>
+<ul>
+<li>
+<p>​<strong>TCP服务端</strong>​：创建套接字→绑定IP/端口→监听→接受连接→通信→关闭。</p>
+</li>
+<li>
+<p>​<strong>TCP客户端</strong>​：创建套接字→连接服务端→通信→关闭。</p>
+</li>
+<li>
+<p>​<strong>UDP</strong>​：无连接，直接发送数据。</p>
+<p>套接字抽象遵循UNIX“一切皆文件”哲学，可使用read/write系统调用。</p>
+<p><img alt="" src="https://hunyuan-plugin-private-1258344706.cos.ap-nanjing.myqcloud.com/pdf_youtu/img/28bb2d0c157d7727039221309fedb2dc-image.png?q-sign-algorithm=sha1&amp;q-ak=AKID372nLgqocp7HZjfQzNcyGOMTN3Xp6FEA&amp;q-sign-time=1761320097%3B2076680097&amp;q-key-time=1761320097%3B2076680097&amp;q-header-list=host&amp;q-url-param-list=&amp;q-signature=b1743b08102a295918729738bcf20b637fdcfd64" /></p>
+</li>
+</ul>
+<h3 id="32-io">3.2 I/O多路复用</h3>
+<p>为处理高并发连接，I/O多路复用（如poll、epoll）允许应用程序阻塞等待多个套接字事件，减少线程资源消耗。例如，poll接口可同时监控多个套接字的数据可读状态，提升效率。</p>
+<hr />
+<h2 id="_6">四、操作系统的网络实现</h2>
+<p>操作系统网络实现分为宏内核（如Linux）和微内核（如ChCore）两类。</p>
+<h3 id="41-linux">4.1 Linux宏内核实现</h3>
+<ul>
+<li>
+<p>​<strong>核心抽象</strong>​：sk_buff结构管理网络包，实现零拷贝；net_device统一网卡交互。</p>
+</li>
+<li>
+<p>​<strong>NAPI机制</strong>​：结合中断和轮询，高频收包时关闭中断，通过软中断轮询处理，平衡实时性与CPU开销。</p>
+</li>
+<li>
+<p>​<strong>收发过程</strong>​：收包包括DMA拷贝→硬中断→软中断→协议栈解析→用户态拷贝；发包相反。</p>
+<p><img alt="" src="https://hunyuan-plugin-private-1258344706.cos.ap-nanjing.myqcloud.com/pdf_youtu/img/83e684f498a8d6fcc9c6cf5b80c8e63f-image.png?q-sign-algorithm=sha1&amp;q-ak=AKID372nLgqocp7HZjfQzNcyGOMTN3Xp6FEA&amp;q-sign-time=1761320100%3B2076680100&amp;q-key-time=1761320100%3B2076680100&amp;q-header-list=host&amp;q-url-param-list=&amp;q-signature=a3ed97dd7c1045249924d52c284f988c4baa773b" /></p>
+</li>
+</ul>
+<h3 id="42-chcore">4.2 ChCore微内核实现</h3>
+<ul>
+<li>
+<p>​<strong>用户态协议栈</strong>​：使用lwIP轻量协议栈，通过IPC与驱动进程通信。pbuf结构类似sk_buff，支持零拷贝。</p>
+</li>
+<li>
+<p>​<strong>中断处理</strong>​：用户态中断线程处理网卡中断，通过异步I/O减少IPC延迟，避免协议栈解析阻塞。</p>
+<p><img alt="" src="https://hunyuan-plugin-private-1258344706.cos.ap-nanjing.myqcloud.com/pdf_youtu/img/c05dd66dfdb59f43fb258069c76fb33a-image.png?q-sign-algorithm=sha1&amp;q-ak=AKID372nLgqocp7HZjfQzNcyGOMTN3Xp6FEA&amp;q-sign-time=1761320102%3B2076680102&amp;q-key-time=1761320102%3B2076680102&amp;q-header-list=host&amp;q-url-param-list=&amp;q-signature=fdca597cdb8460ac1b9cacbb648012a0f2d3c48c" /></p>
+</li>
+</ul>
+<hr />
+<h2 id="_7">五、网络系统的优化</h2>
+<p>网络优化方案涵盖硬件加速和软件优化，旨在提升吞吐量、降低延迟。</p>
+<h3 id="51">5.1 硬件加速方案</h3>
+<ul>
+<li>
+<p>​<strong>巨帧</strong>​：增大数据帧至9000字节，减少传输次数。</p>
+</li>
+<li>
+<p>​<strong>RSS</strong>​：多队列网卡将负载均衡到多核。</p>
+</li>
+<li>
+<p>​<strong>RDMA</strong>​：绕过内核协议栈，直接访问远端内存，提升带宽。</p>
+<p><img alt="" src="https://hunyuan-plugin-private-1258344706.cos.ap-nanjing.myqcloud.com/pdf_youtu/img/d50ba0e8a62b1af7f1099d41a597d5d9-image.png?q-sign-algorithm=sha1&amp;q-ak=AKID372nLgqocp7HZjfQzNcyGOMTN3Xp6FEA&amp;q-sign-time=1761320104%3B2076680104&amp;q-key-time=1761320104%3B2076680104&amp;q-header-list=host&amp;q-url-param-list=&amp;q-signature=675d2562a17372d1c128e63913696dfdaa41f1af" /></p>
+</li>
+</ul>
+<h3 id="52">5.2 软件优化方案</h3>
+<ul>
+<li>
+<p>​<strong>中断优化</strong>​：合并中断或使用NAPI减少中断风暴。</p>
+</li>
+<li>
+<p>​<strong>用户态协议栈</strong>​：如DPDK绕过内核，实现零拷贝；控制平面与数据平面分离提升性能。</p>
+<p><img alt="" src="https://hunyuan-plugin-private-1258344706.cos.ap-nanjing.myqcloud.com/pdf_youtu/img/30941f55dd42fbee9343576719f74843-image.png?q-sign-algorithm=sha1&amp;q-ak=AKID372nLgqocp7HZjfQzNcyGOMTN3Xp6FEA&amp;q-sign-time=1761320107%3B2076680107&amp;q-key-time=1761320107%3B2076680107&amp;q-header-list=host&amp;q-url-param-list=&amp;q-signature=fd6bc966dfb89872296bbd63a5a733e9c8bcc323" /></p>
+</li>
+</ul>
+<h3 id="53">5.3 智能网卡</h3>
+<p>智能网卡通过ASIC、FPGA或SoC实现计算卸载，缓解CPU负担，提升能效。例如，Azure云使用智能网卡使虚拟机吞吐量达31Gbps。</p>
+<hr />
+<h2 id="_8">六、思考题详细解答</h2>
+<h3 id="1">思考题1：网络协议栈的分层设计有哪些优点？</h3>
+<p>​<strong>解答</strong>​：</p>
+<p>分层设计的主要优点包括：</p>
+<ul>
+<li>
+<p>​<strong>模块化与简化开发</strong>​：各层职责明确（如网络层负责寻址，传输层保证可靠性），便于独立开发和维护。</p>
+</li>
+<li>
+<p>​<strong>互操作性</strong>​：标准接口（如TCP/IP）支持异构设备互联，遵循开放协议。</p>
+</li>
+<li>
+<p>​<strong>灵活性与扩展性</strong>​：可针对特定层优化（如添加加密层）而不影响整体结构。</p>
+</li>
+<li>
+<p>​<strong>错误隔离</strong>​：层间错误局部化，例如链路层丢包不影响应用层逻辑。</p>
+<p>缺点可能是性能开销（如头部冗余），但整体利大于弊。</p>
+</li>
+</ul>
+<h3 id="2">思考题2：请描述端到端观点，并列举适合与不适合的场景。</h3>
+<p>​<strong>解答</strong>​：</p>
+<p>​<strong>端到端观点</strong>指通信可靠性应由终端应用保证，底层协议保持简单，避免冗余机制。例如，文件传输需应用层校验完整性，而网络层重传可能不必要。</p>
+<ul>
+<li>
+<p>​<strong>适合场景</strong>​：</p>
+<ul>
+<li>
+<p>音视频直播（应用层可容忍丢包，重传会导致延迟）。</p>
+</li>
+<li>
+<p>分布式数据库事务（应用层需自定义一致性协议）。</p>
+</li>
+<li>
+<p>实时游戏（低延迟优先于绝对可靠）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>​<strong>不适合场景</strong>​：</p>
+<ul>
+<li>
+<p>基础网络服务（如DNS查询，需底层快速重传）。</p>
+</li>
+<li>
+<p>安全传输（如TLS，依赖底层加密可靠性）。</p>
+</li>
+<li>
+<p>物联网设备（资源受限，需简化应用层逻辑）。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3tcp">思考题3：结合端到端观点，如何看待TCP和链路层的纠错冗余？</h3>
+<p>​<strong>解答</strong>​：</p>
+<p>TCP（传输层）和链路层均设计纠错机制（TCP超时重传、链路层丢帧），这存在一定冗余。端到端观点认为，这种冗余可能低效：</p>
+<ul>
+<li>
+<p>​<strong>冗余问题</strong>​：链路层已丢弃错误帧，TCP仍可能重传，增加延迟。</p>
+</li>
+<li>
+<p>​<strong>适用性</strong>​：端到端观点在现代网络仍有效，但需权衡。例如，在低丢包局域网中，冗余机制浪费资源；而在高噪声无线网络中，多层纠错可提升鲁棒性。</p>
+<p>​<strong>结论</strong>​：端到端观点建议将可靠性上移至应用层，但现代系统常保留底层机制作为补充，以实现通用性。优化方向是动态调整（如QUIC协议在应用层实现重传）。</p>
+</li>
+</ul>
+<h3 id="4chcoreipc">思考题4：ChCore微内核模型下，网络包处理的IPC次数及优化设计。</h3>
+<p>​<strong>解答</strong>​：</p>
+<ul>
+<li>
+<p>​<strong>IPC次数</strong>​：从网卡中断到应用收包，至少经历3次IPC：</p>
+<ol>
+<li>
+<p>网卡驱动进程→协议栈进程（传递数据帧）。</p>
+</li>
+<li>
+<p>协议栈进程→应用进程（传递解析后的数据）。</p>
+<p>可能更多次（如协议栈内部线程间IPC）。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>​<strong>IPC路径图</strong>​：</p>
+<p><code>网卡中断 → 驱动进程（IPC1）→ 协议栈进程（IPC2）→ 应用进程</code></p>
+</li>
+<li>
+<p>​<strong>优化方案</strong>​：</p>
+<ul>
+<li>
+<p>减少IPC：将驱动和协议栈合并为单一进程，使用共享内存传递数据。</p>
+</li>
+<li>
+<p>异步处理：驱动进程直接通过非阻塞IPC发送数据至协议栈的专用线程，避免阻塞。</p>
+</li>
+<li>
+<p>批处理：累积多个网络包后一次性IPC，减少切换开销。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5">思考题5：分析宏内核、微内核及库操作系统协议栈的优缺点。</h3>
+<p>​<strong>解答</strong>​：</p>
+<ul>
+<li>
+<p>​<strong>宏内核（如Linux）​</strong>​：</p>
+<ul>
+<li>
+<p>优点：高性能（系统调用开销小）、生态成熟。</p>
+</li>
+<li>
+<p>缺点：安全性低（内核漏洞影响全局）、灵活性差。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>​<strong>微内核用户态协议栈（如ChCore）​</strong>​：</p>
+<ul>
+<li>
+<p>优点：高安全（隔离性好）、易调试。</p>
+</li>
+<li>
+<p>缺点：IPC开销大、性能较低。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>​<strong>库操作系统（如OSv）​</strong>​：</p>
+<ul>
+<li>
+<p>优点：针对虚拟机优化、低延迟（函数调用替代系统调用）。</p>
+</li>
+<li>
+<p>缺点：兼容性差、依赖虚拟化环境。</p>
+<p>​<strong>总结</strong>​：宏内核适合通用场景，微内核注重安全，库操作系统专用于云环境。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6ids">思考题6：设计入侵检测系统（IDS）方案，最小化转发延迟。</h3>
+<p>​<strong>解答</strong>​：</p>
+<p>​<strong>方案设计</strong>​：结合智能网卡、DPDK和Linux BPF，实现高效包检查：</p>
+<ul>
+<li>
+<p>​<strong>智能网卡卸载</strong>​：将模式识别逻辑（如签名匹配）卸载至网卡硬件，减少CPU干预。</p>
+</li>
+<li>
+<p>​<strong>DPDK数据平面</strong>​：使用DPDK绕过内核，直接用户态处理网络包，实现零拷贝和轮询驱动。</p>
+</li>
+<li>
+<p>​<strong>BPF过滤</strong>​：在Linux内核中嵌入BPF程序，对包头部进行快速过滤，仅可疑包送用户态深度检测。</p>
+</li>
+<li>
+<p>​<strong>工作流程</strong>​：</p>
+<ol>
+<li>
+<p>网络包到达智能网卡，硬件预检查包头。</p>
+</li>
+<li>
+<p>DPDK在用户态直接处理包，BPF辅助快速决策。</p>
+</li>
+<li>
+<p>仅潜在威胁包触发完整IDS分析，正常包直接转发。</p>
+<p>此方案最小化延迟，同时保障安全性。</p>
+</li>
+</ol>
+</li>
+</ul>
+<hr />
+<h2 id="_9">结论</h2>
+<p>本文档全面阐述了网络系统的核心原理，从基础协议栈到现代优化技术，体现了分层设计、端到端观点及软硬件协同的重要性。随着万物智联发展，网络系统需持续平衡可靠性、效率与灵活性。思考题解答深化了对关键问题的理解，为实际系统设计提供参考。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

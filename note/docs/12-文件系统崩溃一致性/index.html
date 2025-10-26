@@ -1,0 +1,1632 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="SFXiang">
+      
+      
+        <link rel="canonical" href="https://sfxiang.github.io/note/docs/12-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%B4%A9%E6%BA%83%E4%B8%80%E8%87%B4%E6%80%A7/">
+      
+      
+        <link rel="prev" href="../11-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+      
+      
+        <link rel="next" href="../13-%E6%96%B0%E5%9E%8B%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>文件系统崩溃一致性 - 离岛便利店</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="离岛便利店" class="md-header__button md-logo" aria-label="离岛便利店" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            离岛便利店
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              文件系统崩溃一致性
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="离岛便利店" class="md-nav__button md-logo" aria-label="离岛便利店" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    离岛便利店
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome to MkDocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../malloc%26free/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Malloc&free
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Note
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Note
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Docs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Docs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-%E5%A4%9A%E6%A0%B8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    多核
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    文件系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    文件系统崩溃一致性
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    文件系统崩溃一致性
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 崩溃一致性
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 文件系统操作所要求的三个属性
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 崩溃一致性保障方法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 日志
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 日志">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 日志的生命周期
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 优化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 优化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3.1 利用内存中的页缓存
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3.2 批量处理日志以减少磁盘写
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 日志提交的触发条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-linuxjbd2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5 Linux中的日志系统JBD2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.5 Linux中的日志系统JBD2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#451-jbd2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5.1 JBD2事务的状态
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#452-jbd2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5.2 JBD2部分接口和使用方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#453-jbd2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5.3 JBD2日志的磁盘结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#454-ext4jbd2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5.4 Ext4用JBD2实现的三种日志模式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.6 小结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 写时拷贝
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 写时拷贝">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 更新传递
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 写放大
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 写时拷贝在文件系统中的应用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4 小结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-soft-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Soft Updates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Soft Updates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-soft-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Soft updates 的三条规则
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-%E6%96%B0%E5%9E%8B%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    新型文件系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    设备
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-%E7%BD%91%E7%BB%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-%E8%99%9A%E6%8B%9F%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    系统虚拟化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-%E8%BD%BB%E9%87%8F%E7%BA%A7%E8%99%9A%E6%8B%9F%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    轻量级虚拟化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-%E7%A1%AC%E4%BB%B6%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    硬件结构
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-%E4%B8%AD%E6%96%AD%E5%BC%82%E5%B8%B8%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    中断异常与系统调用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    操作系统内核架构
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-%E5%86%85%E5%AD%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    内存
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-%E8%BF%9B%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    进程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    调度
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    进程间通信
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-%E5%90%8C%E6%AD%A5%E5%8E%9F%E8%AF%AD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    同步原语
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Os
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/malloc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Linux高性能编程：malloc主要原理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Docs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Docs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Computer Science
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/dfx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    调试与故障排除
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/multicore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    多核与多处理器
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络与系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 崩溃一致性
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 文件系统操作所要求的三个属性
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 崩溃一致性保障方法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 日志
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 日志">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 日志的生命周期
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 优化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 优化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3.1 利用内存中的页缓存
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3.2 批量处理日志以减少磁盘写
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 日志提交的触发条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-linuxjbd2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5 Linux中的日志系统JBD2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.5 Linux中的日志系统JBD2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#451-jbd2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5.1 JBD2事务的状态
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#452-jbd2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5.2 JBD2部分接口和使用方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#453-jbd2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5.3 JBD2日志的磁盘结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#454-ext4jbd2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5.4 Ext4用JBD2实现的三种日志模式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.6 小结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 写时拷贝
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 写时拷贝">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 更新传递
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 写放大
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 写时拷贝在文件系统中的应用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4 小结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-soft-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Soft Updates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Soft Updates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-soft-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Soft updates 的三条规则
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">文件系统崩溃一致性</h1>
+<h2 id="1">1. 崩溃一致性</h2>
+<ol>
+<li><strong>分配inode</strong>：新的常规文件需要使用一个新的inode 结构进行保存。因此在创建文件时需先为新的文件分配新的inode 结构。</li>
+</ol>
+<p>这一步骤需要在inode 分配器的位图（bitmap）中查找空闲的inode，并将其对应的比特位标记为1，标记该inode 已被使用。</p>
+<ol>
+<li>
+<p><strong>初始化inode</strong>：在分配并得到inode 之后，文件系统需要对该inode 进行初始化操作，即将新文件的信息保存在inode 结构之中。</p>
+</li>
+<li>
+<p><strong>增加目录项</strong>：最后，需要在父目录中添加新的目录项，保存新文件的文件名和inode 号。</p>
+</li>
+</ol>
+<p><strong>情况1</strong> 只有<u>分配inode</u> 的操作保存在设备中，增加目录项的操作并没有保存在存储设备中</p>
+<p><u>新创建的文件无法在文件系统中被观测到</u>。但是由于对应的inode <u>在分配信息中已经被标记为占用</u>，而实际上该inode 并未被任何文件所使用，该inode 将无法被释放，<u>造成inode空间的泄漏</u>。如果inode 空间被多次泄漏，文件系统中所能保存的文件越来越少。这种情况实际上违反了inode 分配信息与inode 结构的实际使用之间的一致性。</p>
+<p><strong>情况2</strong> 只有<u>初始化inode</u> 的操作保存在设备中，增加目录项的操作并没有保存在存储设备中</p>
+<p><u>新创建的文件无法在文件系统中被观测</u>到。同时，由于<u>inode 的分配信息未被修改</u>，后续的创建文件操作依然可以使用到该inode 结构，因此并未产生空间泄漏。这种情况的出现并不会造成文件系统的一致性问题。</p>
+<p><strong>情况3</strong> 只有<u>增加目录项</u>的操作保存在设备中</p>
+<p>由于增加目录项的操作被持久化在存储设备中，当文件系统遍历该目录时，能够看到新文件对应的文件名和inode 号。</p>
+<p>然而由于该<u>inode 结构中的数据未被初始化</u>，文件系统尝试访问该inode 时，<u>会访问到未初始化的数据从而造成错误</u>。同时，由于该inode 号对应的分配信息未被持久化，在后续的文件操作中，该
+<u>inode 可能会被再次分配给其他文件</u>，从而导致<u>该inode 错误地被两个不同的文件共享</u>，造成数据丢失、泄漏和被篡改等问题。</p>
+<p>这种情况违反了inode 分配信息、inode 结构与目录项中所保存的inode 号之间的一致性，即所有目录项中所保存的inode 号皆应被分配且初始化。</p>
+<p><strong>情况4</strong> 只有分配inode 的操作<u>未保存</u>在设备中</p>
+<p>该情况下，由于分配inode 的信息未被持久化，会造成情况3中错误地指向未分配inode 结构的情况，从而造成正确性和安全性的问题。</p>
+<p><strong>情况5</strong> 只有初始化inode 的操作未保存在设备中</p>
+<p>与情况3相似，如果只有inode 的初始化操作未被持久化，则文件系统在后续访问该文件时，会访
+问到未初始化的数据，从而产生错误。</p>
+<h2 id="2">2. 文件系统操作所要求的三个属性</h2>
+<pre><code>creat(“a”); fd = creat(“b”); write(fd,…); crash
+</code></pre>
+<p><strong>持久化/Durable</strong>: 哪些操作可见 a和b都可以 </p>
+<p><strong>原子性/Atomic</strong>: 要不所有操作都可见，要不都不可见 要么a和b都可见，要么都不可见 </p>
+<p><strong>有序性/Ordered</strong>: 按照前缀序(Prefix)的方式可见 如果b可见，那么a也应该可见</p>
+<h2 id="3">3. 崩溃一致性保障方法</h2>
+<ul>
+<li>原子更新技术 </li>
+<li>日志</li>
+<li>写时复制 </li>
+<li>Soft updates</li>
+</ul>
+<h2 id="4">4. 日志</h2>
+<h3 id="41">4.1 日志的生命周期</h3>
+<p><strong>创建</strong>：在使用日志之前，需要先进行日志的创建和初始化操作。在此过程中，文件系统会为日志分配内存和存储空间，并初始化维护日志所需的元数据。此后，日志进入到写入阶段。</p>
+<p><strong>写入</strong>：在写入阶段，文件系统可以将要进行的操作或操作影响到的数据及其所在位置写入到日志中。举例来说，如果文件系统想要将位置0x50处的数据A改成B，其需要在日志中记录“位置0x50上的数据从A修改为B”。
+需要注意的是，由于操作数量较多或者操作的数据量较大，在写入阶段记录的操作信息（即日志内容）往往超出存储设备的原子写入大小，因而无法原子地写入到存储设备中。因此，在崩溃后，存储设备中处于写入阶段的日志内容可能是不完整的。为了防止这些不完整的日志内容造
+成一致性问题，在进行恢复时，<u>处于写入阶段的日志的内容会被直接丢弃</u>。换句话说，在写入阶段的日志内容一般不会马上生效。这些日志内容的生效需要等到日志的提交阶段。</p>
+<p><strong>提交</strong>：在提交阶段中，<u>文件系统需要将此前在日志中记录的操作信息原子地标记为有效</u>。在日志提交成功后，日志中所记录的信息在进行崩溃恢复时才会发挥效用。具体来说，在进行提交前，文件系统需要将日志内容以固定的格式，持久且完整地保存在存储设备中。在保证所有日志内容均已持久化在存储设备中之后，日志系统将在存储设备上原子地标记日志为已提交状态。在日志提交完成后，日志进入完成阶段。</p>
+<p><strong>完成</strong>：在完成阶段，文件系统可以<u>将实际的修改写回到存储设备之中</u>。由于这些写回的位置及其信息均在日志中有所记录，若在此阶段发生崩溃，在进行恢复时，会使用日志中记录的内容进行恢复，保证日志中所记录操作的原子性。</p>
+<p><strong>销毁</strong>：日志的记录需要占用一定的内存和存储资源。日志无效后，文件系统可以对日志所占用的这些资源进行回收，即销毁日志。一般情况下，这一过程可以通过批量化的形式延迟完成。</p>
+<h3 id="42">4.2 问题</h3>
+<ol>
+<li>每个操作都要写磁盘，内存缓存的优势被抵消</li>
+<li>每个修改都要拷贝新数据到日志</li>
+<li>相同块的多个修改被记录多次</li>
+</ol>
+<h3 id="43">4.3 优化</h3>
+<h4 id="431">4.3.1 利用内存中的页缓存</h4>
+<p><img alt="日志1" src="图片\日志1.png" /></p>
+<p><strong>缺点</strong>：</p>
+<ol>
+<li>丢的多</li>
+<li>依然要写两次磁盘</li>
+</ol>
+<h4 id="432">4.3.2 批量处理日志以减少磁盘写</h4>
+<h3 id="44">4.4 日志提交的触发条件</h3>
+<ul>
+<li>定期触发</li>
+<li>每一段时间（如5s）触发一次 </li>
+<li>日志达到一定量（如500MB）时触发一次 </li>
+<li>用户触发 </li>
+<li>例如：应用调用fsync()时触发</li>
+</ul>
+<h3 id="45-linuxjbd2">4.5 Linux中的日志系统JBD2</h3>
+<p>Journal：日志，由文件或设备中某区域组成</p>
+<p>Handle：原子操作，由需要原子完成的多个修改组成</p>
+<p>Transaction：事务，多个批量在一起的原子操作</p>
+<h4 id="451-jbd2">4.5.1 JBD2事务的状态</h4>
+<p><img alt="JBD2事务的状态" src="图片\JBD2事务的状态.png" /></p>
+<h4 id="452-jbd2">4.5.2 JBD2部分接口和使用方法</h4>
+<p><img alt="JBD2部分接口和使用方法" src="图片\JBD2部分接口和使用方法.png" /></p>
+<h4 id="453-jbd2">4.5.3 JBD2日志的磁盘结构</h4>
+<p><img alt="JBD2日志的磁盘结构" src="图片\JBD2日志的磁盘结构.png" /></p>
+<h4 id="454-ext4jbd2">4.5.4 Ext4用JBD2实现的三种日志模式</h4>
+<p><img alt="Ext4用JBD2实现的三种日志模式" src="图片\Ext4用JBD2实现的三种日志模式.png" /></p>
+<p><strong>writeback</strong>： 在该模式下，Ext4 对于文件数据部分的修改不进行日志记录，且对文件数据的写回没有特定的要求。在这种模式下<u>，文件的数据块修改可以在任何时候写入到磁盘中进行持久化</u>。这种模式的<u>一致性保证比较差</u>。在发生崩溃的时候，有更大的概率发生不一致的情况。但是
+由于对于写回顺序没有特殊要求，这种模式的<u>性能往往是最优的</u>。</p>
+<p><strong>ordered</strong>： 在该模式下，Ext4 对于文件数据部分的修改同样不进行日志记录，但是对于一个文件的数据和元数据修改，需<u>要保证文件数据部分的修改在文件元数据被持久化前持久化到设备中</u>。这一顺序的保证，可以减少数据不一致的情况出现，在一定程度上增强文件系统对一致性的保
+证。该模式是Ext4 中的默认模式，也是一种性能和一致性保证之间的权衡。</p>
+<p><strong>journal</strong>： 在该模式下，Ext4 文件中的数据和元数据修改均使用日志进行保护。这是一种一致性保证很强的模式。但是它要求文件数据在日志中和原位置上进行两次写入。因此，对于产生大量文件数据修改的场景来说，这种模式会带来不小的性能开销和不必要的写入操作。</p>
+<h3 id="46">4.6 小结</h3>
+<p>日志是一种保证原子更新和崩溃一致性的常用方法。通过日志记录，可以保证任意位置任意数量操作的原子完成。然而，使用日志同样会带来一些问题。首先，日志要求所有的修改先在日志中进行记录，再将修改应用到其原有位置上。这样所有的修改都执行了两次：一次在日志中，另外一次在原位置上。因此，对于数据修改较多的场景，使用日志保证原子性可能会带来很大的写入开销。另外，日志的原子性保证依赖于日志恢复，因此在发生崩溃并重启后，需要首先进行日志的恢复。只有日志恢复完毕之后，文件系统才能开始处理新的请求。若日志恢复时间较长，整个文件系统将长时间处于不可用状态，进而影响到操作系统或应用程序的启动时间。</p>
+<h2 id="5">5. 写时拷贝</h2>
+<h3 id="51">5.1 更新传递</h3>
+<p><img alt="写时拷贝" src="图片\写时拷贝.png" /></p>
+<p>在树形数据结构中，写时拷贝往往需要更新到根节点才会停止。我们修改节点C 和E 后，需要继续修改节点B、D 和A（根节点）。这种修改一些节点后，还需要进一步修改数据结构中其他节点以保证原子更新的问题，便称为更新传递问题。</p>
+<p><strong>解决</strong>：</p>
+<p>解决更新传递问题，一种常见的方法是提前进行原子更新。对于树形数据结构来说，并非只有指向树根的指针才可以被原子更新；在上述例子中，原子更新的粒度为一个节点。若在更新传递的过程中，所有要进行的修改被一个原子更新粒度所覆盖，则可以直接原地进行修改，无需继续传递更新。例如在图13.3中，在节点A 中保存了指向节点B 和D 的指针。由于节点A 可以被原子更新，我们可以通过一次原地更新操作，原子地修改A 中指向节点B 和D的指针，让它们指向节点B’和D’，从而避免继续使用写时拷贝技术，停止更新传递。</p>
+<h3 id="52">5.2 写放大</h3>
+<p>写放大问题是指实际修改数据量大于用户要修改的数据量的情况。如在进行以4KB 内存页为粒度的写时拷贝技术时，若想要修改某个页中的1 个字节，我们不得不拷贝整个4KB 内存页中的所有数据，因此修改量从1 个字节被放大到4KB。写时拷贝技术中的更新传递，会使写放大问题更加严重。</p>
+<p><strong>解决</strong>：
+当要修改的数据覆盖了完整的原子更新粒度时，可以无需拷贝原有数据，直接写入新的数据，从而在一定程度上缓解写放大问题。例如在图13.3中，由于原子更新粒度为一个节点，且E 节点中所有的数据均需要被修改，在分配E’后，即使我们将E 中的数据拷贝到E’，这些数据也会被新数据全部覆盖掉。因此，在这种情况下，可以省略写时拷贝中的拷贝操作，从而减少写入操作。</p>
+<h3 id="53">5.3 写时拷贝在文件系统中的应用</h3>
+<p><img alt="写时拷贝在文件系统中的应用" src="图片\写时拷贝在文件系统中的应用.png" /></p>
+<p>我们会将数据块C 和数据块D进行拷贝，并在拷贝副本上进行修改。由于指向数据块C 的指针保存在inode中，而指向数据块D 的指针保存在索引块中，我们需要继续对索引块进行写时拷贝。最终，需要修改的指向数据块C 的指针和指向索引块的指针均保存在inode 结构中。由于inode 结构通常小于存储设备的块大小，通过原子更新inode 结构，我们可以原子地持久化文件数据块C 和数据块D 上的数据修改。由于所有文件数据访问均从inode 结构出发，因此一个文件中的任何位置上的修改，均可以通过写时拷贝技术进行原子更新和持久化。</p>
+<h3 id="54">5.4 小结</h3>
+<p>写时拷贝技术对数据结构有一定的要求，当所有的修改最终能够变成一个原子修改时，才可以使用写时拷贝技术。此外，写时拷贝技术的使用与原子更新粒度有关。当修改的数据量远大于原子更新粒度时，往往只有数据头部和尾部需要真正进行拷贝操作，而中间部分可以根据前文提到的方法省略拷贝操作，直接使用新数据写入新分配出来的节点。这种情况下，写时拷贝技术产生的写放大相对较小。而当数据修改量小于原子更新粒度时，写时拷贝技术造成的写放大会非常严重，即使每次仅修改一个字节，也需要按照原子更新粒度进行数据拷贝。因此，是否适合使用写时拷贝，需要结合<u>原子更新粒度</u>和<u>数据修改量</u>综合考虑。</p>
+<h2 id="6-soft-updates">6. Soft Updates</h2>
+<h3 id="61-soft-updates">6.1 Soft updates 的三条规则</h3>
+<p><strong>规则1</strong> 不要指向一个未初始化的结构。如：目录项指向一个inode 之前，该inode 结构应该先被初始化。
+<strong>规则2</strong> 一个结构被指针指向时，不要重用该结构。如：当一个inode 指向了一个数据块时，这个数据块不应该被重新分配给其他结构。
+<strong>规则3</strong> 对于一个仍有用的结构，不要修改最后一个指向它的指针。如：重命名文件时，在写入新的目录项前，不应删除旧的目录项。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1849 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="SFXiang">
+      
+      
+        <link rel="canonical" href="https://sfxiang.github.io/note/docs/5-%E5%86%85%E5%AD%98/">
+      
+      
+        <link rel="prev" href="../4-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E6%9E%B6%E6%9E%84/">
+      
+      
+        <link rel="next" href="../6-%E8%BF%9B%E7%A8%8B/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>内存 - 离岛便利店</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="离岛便利店" class="md-header__button md-logo" aria-label="离岛便利店" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            离岛便利店
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              内存
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="离岛便利店" class="md-nav__button md-logo" aria-label="离岛便利店" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    离岛便利店
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome to MkDocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../malloc%26free/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Malloc&free
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Note
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Note
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Docs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Docs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-%E5%A4%9A%E6%A0%B8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    多核
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    文件系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%B4%A9%E6%BA%83%E4%B8%80%E8%87%B4%E6%80%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    文件系统崩溃一致性
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-%E6%96%B0%E5%9E%8B%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    新型文件系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    设备
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-%E7%BD%91%E7%BB%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-%E8%99%9A%E6%8B%9F%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    系统虚拟化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-%E8%BD%BB%E9%87%8F%E7%BA%A7%E8%99%9A%E6%8B%9F%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    轻量级虚拟化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-%E7%A1%AC%E4%BB%B6%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    硬件结构
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-%E4%B8%AD%E6%96%AD%E5%BC%82%E5%B8%B8%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    中断异常与系统调用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    操作系统内核架构
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    内存
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    内存
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 虚拟地址
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 虚拟地址">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 分段机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 分页机制
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 页表
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 页表">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 单级页表的问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-aarch644" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 AARCH64的4级页表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-tlb" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 TLB
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 TLB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-tlb" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.1 TLB刷新
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#232-tlb" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.2 TLB与多核
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#233-tlb" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.3 TLB结构
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 按需分配与换页
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 按需分配与换页">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#241" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4.1 换页
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#242" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4.2 缺页异常
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#243" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4.3 按需分配
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-buddy-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 物理内存管理之buddy system
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-rowhammer" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 Rowhammer攻击
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 操作系统内存管理的功能
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 操作系统内存管理的功能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 共享内存
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-copy-on-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 写时拷贝（copy-on-write）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 内存去重
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 内存压缩
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 大页
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-%E8%BF%9B%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    进程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    调度
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    进程间通信
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-%E5%90%8C%E6%AD%A5%E5%8E%9F%E8%AF%AD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    同步原语
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Os
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/malloc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Linux高性能编程：malloc主要原理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Docs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Docs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Computer Science
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/dfx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    调试与故障排除
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/multicore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    多核与多处理器
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../os/docs/network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络与系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 虚拟地址
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 虚拟地址">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 分段机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 分页机制
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 页表
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 页表">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 单级页表的问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-aarch644" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 AARCH64的4级页表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-tlb" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 TLB
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 TLB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-tlb" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.1 TLB刷新
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#232-tlb" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.2 TLB与多核
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#233-tlb" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.3 TLB结构
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 按需分配与换页
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 按需分配与换页">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#241" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4.1 换页
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#242" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4.2 缺页异常
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#243" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4.3 按需分配
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-buddy-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 物理内存管理之buddy system
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-rowhammer" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 Rowhammer攻击
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 操作系统内存管理的功能
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 操作系统内存管理的功能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 共享内存
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-copy-on-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 写时拷贝（copy-on-write）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 内存去重
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 内存压缩
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 大页
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">内存</h1>
+<h2 id="1">1. 虚拟地址</h2>
+<h3 id="11">1.1 分段机制</h3>
+<ul>
+<li>虚拟地址空间分成若干个不同大小的段 </li>
+<li>段表存储着分段信息，可供MMU查询 </li>
+<li>虚拟地址分为：段号 + 段内地址（偏移）</li>
+<li>物理内存也是以段为单位进行分配</li>
+<li>虚拟地址空间中相邻的段，对应的物理 内存可以不相邻</li>
+<li>存在问题</li>
+<li>分配的粒度太粗（不连续，不等长），外部碎片</li>
+<li>段与段之间留下碎片空间，降低主存利用率</li>
+</ul>
+<h3 id="12">1.2 分页机制</h3>
+<ul>
+<li>更细粒度的内存管理</li>
+<li>物理内存也被划分成连续的、等长的物理页 </li>
+<li>虚拟页和物理页的页长相等</li>
+<li>任意虚拟页可以映射到任意物理页 </li>
+<li>大大缓解分段机制中常见的外部碎片</li>
+<li>虚拟地址分为</li>
+<li>虚拟页号 + 页内偏移</li>
+</ul>
+<h2 id="2">2. 页表</h2>
+<h3 id="21">2.1 单级页表的问题</h3>
+<p>空间占用大：</p>
+<p>32位地址空间，页4K，页表项4B：页表大小：232 / 4K * 4 = 4MB </p>
+<p>64位地址空间，页4K，页表项8B，页表大小：264 / 4K * 8 = 33,554,432 GB</p>
+<p>因为单级页表可以看成以虚拟地址的虚拟页号作为索引的数组，整个数组的起始地址（物理地址）存储在页表基地址寄存器中。所以整个数组必须连续存在，其中没有被用到的数组项也需要预留。</p>
+<h3 id="22-aarch644">2.2 AARCH64的4级页表</h3>
+<p><img src="图片\AARCH64的4级页表地址翻译.png" alt="AARCH64的4级页表地址翻译" style="zoom:60%;" />
+<img src="图片\AARCH64的4级页表.png" alt="AARCH64的4级页表" style="zoom:60%;" /></p>
+<p>页表项：<img src="图片\页表项.png" alt="页表项" style="zoom:60%;" /></p>
+<p>最后12位是属性位哦！</p>
+<p><strong>页表使能</strong>：</p>
+<ul>
+<li>CPU启动流程 </li>
+<li>上电后默认进入<u>物理寻址</u>模式</li>
+<li>系统软件配置控制寄存器，使能页表，进入虚拟寻址模式</li>
+<li>AARCH64 </li>
+<li>SCTLR_EL1 （System Control Register, EL1）</li>
+<li>第0位（M位）置1，即在EL0和EL1权限级使能页表</li>
+<li>对比x86_64</li>
+<li>CR0，第31位（PG位）置1，使能页表</li>
+</ul>
+<p><strong>空间占用</strong>：</p>
+<p>一个页表页为<code>4K</code></p>
+<p>假设整个应用程序的虚拟地址空间中只有两个虚拟页被占用，分别对应于最低和最高的两个虚拟地址，那么需要1个0级页表，2个1级页表，2个2级页表，2个3级页表，共7个页表，28k物理内存空间。</p>
+<h3 id="23-tlb">2.3 TLB</h3>
+<h4 id="231-tlb">2.3.1 TLB刷新</h4>
+<p>不同的应用程序虚拟地址空间不一样，而TLB是虚拟地址到物理地址的映射，所以切换应用程序的时候，需要刷新TLB</p>
+<p>🔺 操作系统在进行<u>页表切换</u>的时候，需要主动刷新TLB</p>
+<p><strong>AARCH64</strong>：</p>
+<p>应用程序和操作系统使用不同的页表，<code>TTBR0_EL1</code>,<code>TTBR1_EL1</code>，系统调用过程不需要切换页表</p>
+<p><strong>x86-64</strong>：</p>
+<p>内核映射到应用页表的高地址，系统调用也不需要切换页表，不用刷TLB</p>
+<p><strong>降低TLB刷新的开销</strong>：</p>
+<ul>
+<li>为不同的页表打上标签</li>
+<li>TLB缓存项都具有页表标签，切换页表不再需要刷新TLB </li>
+<li><strong>x86_64</strong>：PCID（Process Context ID）</li>
+<li>PCID存储在CR3的低位中 </li>
+<li>在KPTI使用后变得尤为重要 <ul>
+<li>KPTI: Kernel Page Table Isolation </li>
+<li>即内核与应用不共享页表，防御Meltdown攻击 https://meltdownattack.com/ </li>
+</ul>
+</li>
+<li><strong>AARCH64</strong>：ASID（Address Space ID）</li>
+<li>OS为不同进程分配8/16 ASID，将ASID填写在TTBR0_EL1的高8/16位</li>
+<li>ASID位数由TCR_EL1的第36位（AS位）决定</li>
+</ul>
+<p>🔺 用了ASID后切换页表不需要刷新TLB，但是<u>修改页表映射</u>后，仍需要刷新TLB</p>
+<p><strong>全局TLB</strong>：</p>
+<p>第三级页表的Lower attributes的第11位是nG（not Global）位</p>
+<ul>
+<li>nG == 0: 相应TLB缓存项对所有进程有效</li>
+<li>nG == 1: 仅对特定进程（ASID）有效</li>
+</ul>
+<p>🔺<strong>为什么需要全局TLB</strong>：</p>
+<p>内核空间和用户空间是分开的，并且<u>内核空间是所有进程共享</u>。既然内核空间是共享的，进程A切换进程B的时候，如果进程B访问的地址位于内核空间，完全可以使用进程A缓存的TLB。</p>
+<p>但是现在由于ASID不一样，导致TLB miss。我们针对内核空间这种全局共享的映射关系称之为global映射。针对每个进程的映射称之为non-global映射。所以，我们在最后一级页表中引入一个bit(non-global (nG) bit)代表是不是global映射。</p>
+<p>当虚拟地址映射物理地址关系缓存到TLB时，将nG bit也存储下来。当判断是否命中TLB时，当比较tag相等时，再判断是不是global映射，<u>如果是的话，直接判断TLB hit</u>，无需比较ASID。当不是global映射时，最后比较ASID判断是否TLB hit。</p>
+<p>（直白的说，内核地址在TLB里都标记为global?）</p>
+<p><img alt="tlb结构" src="图片\tlb结构.png" /></p>
+<h4 id="232-tlb">2.3.2 TLB与多核</h4>
+<ul>
+<li>需要刷新其它核的TLB吗？</li>
+<li>一个进程可能在多个核上运行 </li>
+<li>如何知道需要刷新哪些核？ </li>
+<li>操作系统知道进程调度信息</li>
+<li>怎么刷新其他核？ </li>
+<li>AARCH64: 可在local CPU上刷新其它核TLB <ul>
+<li>TLBI ASIDE1IS</li>
+</ul>
+</li>
+<li>x86_64:<ul>
+<li>发送IPI中断某个核，通知它主动刷新</li>
+</ul>
+</li>
+</ul>
+<h4 id="233-tlb">2.3.3 TLB结构</h4>
+<p>为什么分级？我推测是利用局部性加快查询速度？</p>
+<p><img alt="tlb" src="图片\tlb.png" /></p>
+<h3 id="24">2.4 按需分配与换页</h3>
+<p>▲ 被分配使用的虚拟页，在内存中可能也没有相应的物理页映射</p>
+<ul>
+<li>情景1: </li>
+<li>两个应用程序各自需要使用 3GB 的物理内存</li>
+<li>整个机器实际上总共只有 4GB 的物理内存 </li>
+<li>情景2: </li>
+<li>一个应用程序申请预先分配足够大的（虚拟）内存 </li>
+<li>实际上其中大部分的虚拟页最终都不会用到</li>
+</ul>
+<h4 id="241">2.4.1 换页</h4>
+<p><strong>基本思想</strong></p>
+<p>将物理内存里面存不下的内容放到磁盘上</p>
+<p>虚拟内存使用不受物理内存大小限制</p>
+<p><strong>过程</strong></p>
+<ol>
+<li>操作系统希望从物理页A那里回收物理页P（对应A的虚拟页V）</li>
+<li>操作系统把物理页P的内容写到磁盘上，并在A的页表中去掉虚拟页V的映射</li>
+<li>操作系统记录物理页P被放在磁盘上的位置</li>
+<li>回收物理页P分配给其他应用程序</li>
+<li>此时，A的虚拟页V处于已分配但未映射的状态</li>
+</ol>
+<p><strong>预取</strong></p>
+<p>因为换页会涉及耗时的磁盘操作，因此操作系统往往会引入预取机制进行优化</p>
+<p>当发生换入操作时，预测还有哪些页即将被访问，提前将他们一并换入物理内存</p>
+<p>（以上针对第一个场景）</p>
+<ul>
+<li>替换策略的评价标准</li>
+<li>缺页发生的概率</li>
+<li>策略本身的性能开销</li>
+<li>🔺如何高效地记录物理页的使用情况</li>
+<li>Recap：上节课说到的页表项中Access/Dirty Bits</li>
+</ul>
+<p><strong>Thrashing Problem</strong>:</p>
+<ul>
+<li>直接原因</li>
+<li>过于频繁的缺页异常（物理内存总需求过大）</li>
+<li>大部分 CPU 时间都被用来处理缺页异常</li>
+<li>等待缓慢的磁盘 I/O 操作</li>
+<li>仅剩小部分的时间用于执行真正有意义的工作</li>
+<li>调度器造成问题加剧</li>
+<li>等待磁盘 I/O导致CPU利用率下降</li>
+<li>调度器载入更多的进程以期提高CPU利用率</li>
+<li>触发更多的缺页异常、进一步降低CPU利用率、导致连锁反</li>
+</ul>
+<p><strong>工作集模型</strong></p>
+<p>一个进程在时间t的工作集W(t, x) (Peter Denning)：其在时间段（t - x, t)内使用的内存页集合，也被视为其在未来（下一个x时间内）会访问的页集合， 如果希望进程能够顺利进展，则需要讲该集合保持在内存中。</p>
+<ul>
+<li>工作集时钟中断固定间隔发生，处理函数扫描内存页</li>
+<li>访问位为1则说明在此次tick中被访问， 记录上次使用时间为当前时间 </li>
+<li>访问位为0（此次tick中未访问） <ul>
+<li>Age = 当前时间 – 上次使用时间 </li>
+<li>若Age大于设置的x，则不在工作集 </li>
+<li>将所有访问位清0 </li>
+</ul>
+</li>
+<li>注意访问位（access bit）需要硬件支持<ul>
+<li>需要CPU硬件在程序访问某个页的时候自动的将访问位设为1</li>
+</ul>
+</li>
+</ul>
+<h4 id="242">2.4.2 缺页异常</h4>
+<p>换页机制能正常工作的前提是当应用程序访问已分配但未映射的虚拟页时会触发缺页异常</p>
+<h4 id="243">2.4.3 按需分配</h4>
+<p>（针对第二个场景）</p>
+<p>当应用程序申请内存分配的时候，操作系统可选择将新分配的虚拟页标记位<em>已分配但未映射</em>。当应用程序真的要访问这个虚拟页时，再映射到物理页。</p>
+<h3 id="25-buddy-system">2.5 物理内存管理之buddy system</h3>
+<p><img alt="buddy1" src="图片\buddy1.png" /></p>
+<p><img alt="buddy2" src="图片\buddy2.png" /></p>
+<ul>
+<li>高效地找到伙伴块 </li>
+<li>互为伙伴的两个块的物理地址仅有一位不同 </li>
+<li>一个是0，另一个是1</li>
+<li>块的大小决定是哪一位</li>
+</ul>
+<h3 id="26-rowhammer">2.6 Rowhammer攻击</h3>
+<p>攻击者利用物理内存缺陷，极频繁访问某一行，其相邻行某些位会发生翻转</p>
+<p>巧妙地利用位翻转，可以实施包括提权在内的多种攻击</p>
+<p><strong>安全防御</strong></p>
+<ul>
+<li>为抵御Rowhammer攻击，实际上操作系统需要知道部分硬件细节，从而能够在物理内存分配时主动加入 一些Guard Page</li>
+<li>为抵御cache Side Channel攻击，操作系统需要知道同样cache映射细节</li>
+</ul>
+<h2 id="3">3. 操作系统内存管理的功能</h2>
+<h3 id="31">3.1 共享内存</h3>
+<ul>
+<li>节约内存 ： 共享库</li>
+<li>进程通信：传递数据</li>
+</ul>
+<h3 id="32-copy-on-write">3.2 写时拷贝（copy-on-write）</h3>
+<p><strong>实现</strong></p>
+<ul>
+<li>修改页表权限项</li>
+<li>在缺页时拷贝、恢复</li>
+</ul>
+<h3 id="33">3.3 内存去重</h3>
+<ul>
+<li>memory deduplication </li>
+<li>基于写时拷贝机制 </li>
+<li>在内存中扫描发现具有相同内容的物理页面</li>
+<li>执行去重 </li>
+<li>
+<p>操作系统发起，对用户态透明</p>
+</li>
+<li>
+<p>如何发现相同页</p>
+</li>
+<li>异或</li>
+<li>哈系数</li>
+</ul>
+<p><strong>内存去重潜在安全隐患</strong></p>
+<ul>
+<li>导致新的side channel </li>
+<li>访问被合并的页会导致访问延迟明显 （写被合并的页的时候会发生COW）</li>
+<li>潜在攻击 – 攻击者可以确认目标进程中含有构造数据</li>
+</ul>
+<h3 id="34">3.4 内存压缩</h3>
+<p>当内存资源不充足的时候， 选择将一些“最近不太会 使用”的内存页进行数据压缩，从而释放出空闲内存</p>
+<p>**Linux **</p>
+<ul>
+<li>swap：换页过程中磁盘的缓存</li>
+<li>将准备换出的数据压缩并先写入 zswap 区域 （内存）</li>
+<li>好处：减少甚至避免磁盘I/O；增加设备寿命</li>
+</ul>
+<h3 id="35">3.5 大页</h3>
+<ul>
+<li>在4级页表中，某些页表项只保留两级或三级页表</li>
+<li>L2页表项的第1位 </li>
+<li>标识着该页表项中存储的物理地址（页号）是指向 L3 页表页（该位是 1）还是指向一个 2M 的物理页（该位 是 0） </li>
+<li>L1页表项的第1位 </li>
+<li>类似地，可以指向一个 1G 的物理页</li>
+</ul>
+<p><img alt="大页" src="图片\大页.png" /></p>
+<p><strong>利弊</strong></p>
+<ul>
+<li>好处 </li>
+<li>减少TLB缓存项的使用，提高 TLB 命中率 </li>
+<li>减少页表的级数，提升遍历页表的效率 </li>
+<li>案例 </li>
+<li>提供API允许应用程序进行显示的大页分配</li>
+<li>透明大页（Transparent Huge Pages) 机制 </li>
+<li>弊端</li>
+<li>未使用整个大页而造成物理内存资源浪费 </li>
+<li>增加管理内存的复杂度</li>
+</ul>
+<p><strong>计算</strong></p>
+<blockquote>
+<p>在32位的机器中，巨页的大小是4M；在64位机器中，巨页的大小是2M，为什么巨页的大小不一致。</p>
+</blockquote>
+<p>64位机器使用了4级页表，每一级页表使用9 bit做索引，大页包括了21 bit（48-4 * 9+9），因此大小是2M；在32位的机器中，使用了2级页表，每一级页表使用了10 bit做索引，因此大页大小为4M（22 bit(32-2 * 10+10））</p>
+<p>在32位机器中，一个页表项占<code>4 bytes</code>；而在64位机器中一个页表项占<code>8 bytes</code>。</p>
+<p>两种机器都选<code>4k</code>作为最小页大小时，32位机器一个<code>L3</code>页表能指向的合计内存区域为64位机器的两倍。所以巨页大小为64位机器的两倍。</p>
+<p><u>32位机器：</u></p>
+<p>一页为<code>4k</code>，所以一个页表页可以存放<code>1024</code>个页表项：
+$$
+4k \div 4 bytes = 2^{10} = 1024
+$$
+也就是说<code>L3</code>页表页中有<code>1024</code>个页表项，又因为一个页表项可以指向一个<code>4k</code>的物理页，所以一个<code>L3</code>页表页合计可以指向<code>4M</code>的物理页：
+$$
+1024 * 4k = 2^{12} k = 4M
+$$</p>
+<p><u>64位机器：</u></p>
+<p>64位机器一个页表项占<code>8 bytes</code>，所以一个页表也可以放<code>512</code>个页表项。</p>
+<p>所以<code>L3</code>页表页可以指向<code>2M</code>的页表页：
+$$
+512 * 4k = 2M
+$$</p>
+<blockquote>
+<p>为什么OS/MMU使用多级页表映射虚拟地址到物理地址中？使用4级页表的最大内存空间消耗是多少？</p>
+</blockquote>
+<p>减少页表的空间开销
+$$
+4KB+4KB<em>2^9+4KB</em>(2^9)^2+4KB<em>(2^9)^3
+$$
+</em><em>使用多级页表原因</em>*：</p>
+<p>使用多级页表是为了压缩页表在内存中的占用大小。</p>
+<p>多级页表允许在整个页表结构中出现空洞，而单级页表需要每一项都实际存在（假设页的大小位<code>4k</code>页表项占<code>8 bytes</code>,那么要占空间33554432GB）。</p>
+<p>在实际使用中，应用程序的虚拟地址空间中的绝大部分处于未分配状态，多级页表可以部分创建，能够极大地节约所占空间。</p>
+<p><strong>最大空间消耗：</strong></p>
+<p>使用四级页表最大空间消耗为使用全部虚拟空间时</p>
+<p>假设使用全部<code>48</code>位虚拟空间，即
+$$
+2^{48}
+$$
+因为一个页表页可以放<code>512</code>个页表项</p>
+<p>则<code>L1</code>有<code>512</code>个页表页，<code>L2</code>有<code>512*512</code>个页表，<code>L3</code>有<code>512*512*512</code>个页表页</p>
+<p>则共需空间
+$$
+(1+512+521^{2}+512^{3})*4kB ≈ 513GB
+$$</p>
+<h3 id="_2"></h3>
+<blockquote>
+<p>在ARM-mmu架构中，mmu是如何区分页条目是否被使用</p>
+</blockquote>
+<p>检查页表条目中第一个属性位</p>
+<p>第三级页表页中的页表项中，第0位表示该项是否有效</p>
+<blockquote>
+<p>使用巨页的优点和缺点分别是什么</p>
+</blockquote>
+<p>优点：TLB miss少，缺页异常少等。缺点：内存分配粒度大，可能造成内存浪费</p>
+<blockquote>
+<p>内存的属性位AP和UXN已经能够隔离用户态和内核态，为什么还需要两个ttbr寄存器？</p>
+</blockquote>
+<p>▲ AP（第3级页表页中的页表项）：读写权限位</p>
+<p>▲ XN：EL0能不能执行</p>
+<p>▲ PNX：EL1能不能执行</p>
+<p>两个基地址寄存器寄存器相对于一个基地址寄存器的好处是：”<strong>不同进程可共用独立的内核页表，不再需要修改每个进程页表的高地址区域来映射内核页，内核的设计和实现更加方便</strong>“。</p>
+<p>两个ttbr寄存器并不能防住meltdown攻击，某些arm架构的CPU仍然存在meltdown的漏洞。使用软件防御meltdown攻击的方法是使用KPTI（Kernel page-table isolation）。对于arm来说，需要三张页表，两张kernel页表和一张user页表。对于x86来说，需要两张页表，对应kernel mode和user mode的两张页表。在用户态时，页表里面只映射了部分的kernel空间，而进入内核态之后，会切换页表，切换到full kernel space的页表。通过这种方式，我们可以使用纯软件的方法防御meltdown攻击，但是这会带来切换页表以及flush tlb的额外开销。</p>
+<blockquote>
+<p>TLB能够缓存虚拟地址到物理地址的映射，当发生进程间的上下文切换的时候，需要刷掉所有的TLB条目，这是为什么？你能想出一种解决方式，使得TLB条目在上下文切换的时候不需要被刷掉吗？</p>
+</blockquote>
+<p>不同的进程可能使用相同的虚拟地址；使用ASID技术</p>
+<p><strong>为什么上下文切换要刷<code>TLB</code>：</strong></p>
+<p>因为TLB是使用虚拟地址进行查询的，不同的进程使用不同的页表，同一个虚拟地址<code>VA</code>可能对应不同的物理地址<code>PA1</code>和<code>PA2</code>。</p>
+<p>当进程1访问<code>VA</code>后，<code>TLB</code>会缓存<code>VA</code>到<code>PA1</code>的映射；在切换到进程2后，页表已经发生了变化，再次访问虚拟地址<code>VA</code>，如果没有刷新<code>TLB</code>，则会查询到<code>VA</code>到<code>PA1</code>的映射，而非<code>PA2</code>，进而产生错误。</p>
+<p>所以发生进程间上下文切换时，需要刷掉所有TLB条目。</p>
+<p><strong>不需要刷<code>TLB</code>的解决方式：</strong></p>
+<p>可以为<code>TLB</code>缓存项打上标签。</p>
+<p>操作系统为不同的应用程序（进程）分配不同的标签（<code>ASID</code>）作为进程的身份标签，将该标签写入进程页表基地址寄存器的空闲位。<code>TLB</code>中的缓存项也会包含<code>ASID</code>这个标签，从而使<code>TLB</code>中属于不同进程的缓存项被区分开。所以切换进程时，不用刷新<code>TLB</code>。</p>
+<blockquote>
+<p>在ARMv8结构之前，内存属性中没有DBM（Dirty Bit Modifier）位。这意味着硬件不支持脏页。所以OS需要如何模拟并且记录脏页呢？给出一种可行的解决办法</p>
+</blockquote>
+<p>软件模拟，初始化的时候将所有的页的<u>可写位都置为0</u>而<u>OS中记录当前页具有写权限</u>，当CPU触发了一个写请求的时候会产生fault，OS能够检察该写请求是否合法，如果合法将对应的页条目中的可写属性位置为1</p>
+<p>利用读写权限模拟记录脏页</p>
+<p>增加一个读写权限位。先将所有页的读写权限都设为<strong>只读</strong>，当要一个页时，会触发permission fault，将该位改成<strong>可写</strong>，此时该页也变为脏页。之后的写，因为已经将权限改为可写，所以不会触发permission fault。</p>
+<p>也就是说当该位位<strong>可写</strong>，则说明被写过，是脏页。如果是<strong>只读</strong>，则不是脏页。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
